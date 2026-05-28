@@ -1,19 +1,22 @@
 import express from "express";
 import type { Request, Response } from "express";
+import { carRoutes } from "./routes/carRoutes.js";
+import { departmentRoutes } from "./routes/departmentRoutes.js";
+import { aboutRoutes } from "./routes/aboutRoutes.js";
+import { contactRoutes } from "./routes/contactRoutes.js";
+
 const app = express();
 const port = 4000;
+
+app.use("/biler-til-salg", carRoutes);
+app.use("/afdelinger", departmentRoutes);
+app.use("/om-os", aboutRoutes);
+app.use("/kontakt", contactRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Forsiden");
 });
 
-app.get("/biler-til-salg", (req: Request, res: Response) => {
-  res.send("Biler til salg");
-});
-
-app.get("/afdelinger", (req: Request, res: Response) => {
-  res.send("Afdelinger");
-});
 app.get("/om-os", (req: Request, res: Response) => {
   res.send("Om os");
 });
