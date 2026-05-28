@@ -4,25 +4,22 @@ import { carRoutes } from "./routes/carRoutes.js";
 import { departmentRoutes } from "./routes/departmentRoutes.js";
 import { aboutRoutes } from "./routes/aboutRoutes.js";
 import { contactRoutes } from "./routes/contactRoutes.js";
+import dotenv from "dotenv";
+dotenv.config();
 
+// sætter port
+const port = process.env.PORT || "4000";
+// Opretter express objekt
 const app = express();
-const port = 4000;
-
-app.use("/biler-til-salg", carRoutes);
-app.use("/afdelinger", departmentRoutes);
-app.use("/om-os", aboutRoutes);
-app.use("/kontakt", contactRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Forsiden");
 });
 
-app.get("/om-os", (req: Request, res: Response) => {
-  res.send("Om os");
-});
-app.get("/kontakt", (req: Request, res: Response) => {
-  res.send("Kontakt");
-});
+app.use("/biler", carRoutes);
+app.use("/afdeling", departmentRoutes);
+app.use("/om-os", aboutRoutes);
+app.use("/kontakt", contactRoutes);
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({

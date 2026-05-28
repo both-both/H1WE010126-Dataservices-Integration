@@ -1,16 +1,20 @@
 import { Request, Response, Router } from "express";
 const routes = Router();
 
-routes.get("/jylland", (req: Request, res: Response) => {
-  res.send("Jylland");
+routes.get("/", (req: Request, res: Response) => {
+  res.send("Vores afdelinger");
 });
 
-routes.get("/fyn", (req: Request, res: Response) => {
-  res.send("Fyn");
+routes.get("/:landsdel/", (req: Request, res: Response) => {
+  console.log(req.params);
+  const { landsdel } = req.params;
+  res.send(`Afdelinger i ${landsdel}`);
 });
 
-routes.get("/sjaelland", (req: Request, res: Response) => {
-  res.send("Sjælland");
+routes.get("/:landsdel/:by", (req: Request, res: Response) => {
+  console.log(req.params);
+  const { landsdel, by } = req.params;
+  res.send(`Din lokale afdelingen i ${by}`);
 });
 
 export const departmentRoutes = routes;
