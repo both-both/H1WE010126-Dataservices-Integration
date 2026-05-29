@@ -27,16 +27,32 @@ model User {
   @@map("users") // Navn på tabel
 }
 
-model Vehicle{
+model Vehicle {
   id Int @id @default(autoincrement()) // Felt til primær nøgle
-  type String // Felt til tekst
-  model String // Felt til tekst
-  class String // Felt til tekst
+  category String // Felt til tekst
   brand String // Felt til tekst
+  model String // Felt til tekst
+  year Decimal // Felt til tekst
   price Float @default(0.00) // Felt til decimaltal
+  fueltype String
   hasTowBar Boolean @default(false) // Felt til boolean (true/false)
   isActive  Boolean @default(false) // Felt til boolean (true/false)
   createAt DateTime @default(now())
 
   @@map("vehicles") // Navn på tabel
+}
+
+model Category { 
+  id Int @id @default(autoincrement()) // Felt til primær nøgle
+  name String // Felt til tekst
+
+  @@map("categories") // Navn på tabel
+}
+
+model Brand { 
+id Int @id @default(autoincrement()) // Felt til primær nøgle
+name String
+logo String
+
+@@map("brands") // Navn på tabel
 }
