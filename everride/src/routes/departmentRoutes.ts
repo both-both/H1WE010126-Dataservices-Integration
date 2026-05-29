@@ -5,16 +5,16 @@ routes.get("/", (req: Request, res: Response) => {
   res.send("Vores afdelinger");
 });
 
-routes.get("/:landsdel/", (req: Request, res: Response) => {
+routes.get("/:region/", (req: Request, res: Response) => {
   console.log(req.params);
-  const { landsdel } = req.params;
-  res.send(`Afdelinger i ${landsdel}`);
+  const { region } = req.params;
+  res.send(`Afdelinger i ${region}`);
 });
 
-routes.get("/:landsdel/:by", (req: Request, res: Response) => {
+routes.get("/:region/:city", (req: Request, res: Response) => {
   console.log(req.params);
-  const { landsdel, by } = req.params;
-  res.send(`Din lokale afdelingen i ${by}`);
+  const { region, city } = req.params;
+  res.send(`Din lokale afdelingen i ${city}`);
 });
 
 export const departmentRoutes = routes;

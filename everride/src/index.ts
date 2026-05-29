@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // sætter port
-const port = process.env.PORT || "4000";
+const port = process.env.PORT;
 // Opretter express objekt
 const app = express();
 
@@ -21,6 +21,7 @@ app.use("/afdeling", departmentRoutes);
 app.use("/om-os", aboutRoutes);
 app.use("/kontakt", contactRoutes);
 
+// 404 Error handling
 app.use((req: Request, res: Response) => {
   res.status(404).json({
     message: "404 - Bad endpoint", // object sent as json
