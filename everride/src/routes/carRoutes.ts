@@ -1,9 +1,10 @@
 import { Request, Response, Router } from "express";
+import { carController } from "../controller/carController.js";
 const routes = Router();
 
-routes.get("/", (req: Request, res: Response) => {
-  res.send("Biler til salg");
-});
+routes.get("/", carController.getRecords);
+//carRoutes get.records
+//res.send("Biler til salg");
 
 routes.get("/:brand", (req: Request, res: Response) => {
   const { brand } = req.params;

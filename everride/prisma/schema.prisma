@@ -27,7 +27,7 @@ model User {
   @@map("users") // Navn på tabel
 }
 
-model Vehicle {
+model car {
   id Int @id @default(autoincrement()) // Felt til primær nøgle
   category String // Felt til tekst
   brand String // Felt til tekst
@@ -39,7 +39,7 @@ model Vehicle {
   isActive  Boolean @default(false) // Felt til boolean (true/false)
   createAt DateTime @default(now())
 
-  @@map("vehicles") // Navn på tabel
+  @@map("cars") // Navn på tabel
 }
 
 model Category { 
