@@ -32,14 +32,14 @@ model car {
   category String // Felt til tekst
   brand String // Felt til tekst
   model String // Felt til tekst
-  year Decimal // Felt til tekst
+  year Int // Felt til tekst
   price Float @default(0.00) // Felt til decimaltal
   fueltype String
   hasTowBar Boolean @default(false) // Felt til boolean (true/false)
   isActive  Boolean @default(false) // Felt til boolean (true/false)
   createAt DateTime @default(now())
 
-  @@map("cars") // Navn på tabel
+  @@map("car") // Navn på tabel
 }
 
 model Category { 

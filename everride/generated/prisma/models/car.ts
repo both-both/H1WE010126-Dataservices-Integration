@@ -28,13 +28,13 @@ export type AggregateCar = {
 
 export type CarAvgAggregateOutputType = {
   id: number | null
-  year: runtime.Decimal | null
+  year: number | null
   price: number | null
 }
 
 export type CarSumAggregateOutputType = {
   id: number | null
-  year: runtime.Decimal | null
+  year: number | null
   price: number | null
 }
 
@@ -43,7 +43,7 @@ export type CarMinAggregateOutputType = {
   category: string | null
   brand: string | null
   model: string | null
-  year: runtime.Decimal | null
+  year: number | null
   price: number | null
   fueltype: string | null
   hasTowBar: boolean | null
@@ -56,7 +56,7 @@ export type CarMaxAggregateOutputType = {
   category: string | null
   brand: string | null
   model: string | null
-  year: runtime.Decimal | null
+  year: number | null
   price: number | null
   fueltype: string | null
   hasTowBar: boolean | null
@@ -222,7 +222,7 @@ export type CarGroupByOutputType = {
   category: string
   brand: string
   model: string
-  year: runtime.Decimal
+  year: number
   price: number
   fueltype: string
   hasTowBar: boolean
@@ -258,7 +258,7 @@ export type carWhereInput = {
   category?: Prisma.StringFilter<"car"> | string
   brand?: Prisma.StringFilter<"car"> | string
   model?: Prisma.StringFilter<"car"> | string
-  year?: Prisma.DecimalFilter<"car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  year?: Prisma.IntFilter<"car"> | number
   price?: Prisma.FloatFilter<"car"> | number
   fueltype?: Prisma.StringFilter<"car"> | string
   hasTowBar?: Prisma.BoolFilter<"car"> | boolean
@@ -287,7 +287,7 @@ export type carWhereUniqueInput = Prisma.AtLeast<{
   category?: Prisma.StringFilter<"car"> | string
   brand?: Prisma.StringFilter<"car"> | string
   model?: Prisma.StringFilter<"car"> | string
-  year?: Prisma.DecimalFilter<"car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  year?: Prisma.IntFilter<"car"> | number
   price?: Prisma.FloatFilter<"car"> | number
   fueltype?: Prisma.StringFilter<"car"> | string
   hasTowBar?: Prisma.BoolFilter<"car"> | boolean
@@ -321,7 +321,7 @@ export type carScalarWhereWithAggregatesInput = {
   category?: Prisma.StringWithAggregatesFilter<"car"> | string
   brand?: Prisma.StringWithAggregatesFilter<"car"> | string
   model?: Prisma.StringWithAggregatesFilter<"car"> | string
-  year?: Prisma.DecimalWithAggregatesFilter<"car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  year?: Prisma.IntWithAggregatesFilter<"car"> | number
   price?: Prisma.FloatWithAggregatesFilter<"car"> | number
   fueltype?: Prisma.StringWithAggregatesFilter<"car"> | string
   hasTowBar?: Prisma.BoolWithAggregatesFilter<"car"> | boolean
@@ -333,7 +333,7 @@ export type carCreateInput = {
   category: string
   brand: string
   model: string
-  year: runtime.Decimal | runtime.DecimalJsLike | number | string
+  year: number
   price?: number
   fueltype: string
   hasTowBar?: boolean
@@ -346,7 +346,7 @@ export type carUncheckedCreateInput = {
   category: string
   brand: string
   model: string
-  year: runtime.Decimal | runtime.DecimalJsLike | number | string
+  year: number
   price?: number
   fueltype: string
   hasTowBar?: boolean
@@ -358,7 +358,7 @@ export type carUpdateInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   brand?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   fueltype?: Prisma.StringFieldUpdateOperationsInput | string
   hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -371,7 +371,7 @@ export type carUncheckedUpdateInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   brand?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   fueltype?: Prisma.StringFieldUpdateOperationsInput | string
   hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -384,7 +384,7 @@ export type carCreateManyInput = {
   category: string
   brand: string
   model: string
-  year: runtime.Decimal | runtime.DecimalJsLike | number | string
+  year: number
   price?: number
   fueltype: string
   hasTowBar?: boolean
@@ -396,7 +396,7 @@ export type carUpdateManyMutationInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   brand?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   fueltype?: Prisma.StringFieldUpdateOperationsInput | string
   hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -409,7 +409,7 @@ export type carUncheckedUpdateManyInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   brand?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   fueltype?: Prisma.StringFieldUpdateOperationsInput | string
   hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -466,14 +466,6 @@ export type carSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
-}
-
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 
@@ -540,7 +532,7 @@ export type $carPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     category: string
     brand: string
     model: string
-    year: runtime.Decimal
+    year: number
     price: number
     fueltype: string
     hasTowBar: boolean
@@ -973,7 +965,7 @@ export interface carFieldRefs {
   readonly category: Prisma.FieldRef<"car", 'String'>
   readonly brand: Prisma.FieldRef<"car", 'String'>
   readonly model: Prisma.FieldRef<"car", 'String'>
-  readonly year: Prisma.FieldRef<"car", 'Decimal'>
+  readonly year: Prisma.FieldRef<"car", 'Int'>
   readonly price: Prisma.FieldRef<"car", 'Float'>
   readonly fueltype: Prisma.FieldRef<"car", 'String'>
   readonly hasTowBar: Prisma.FieldRef<"car", 'Boolean'>

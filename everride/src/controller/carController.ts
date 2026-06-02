@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { prisma } from "../prisma.js";
+import { json } from "node:stream/consumers";
+
 // Defination af klasse
 class CarController {
   // Metode til at hente alle biler
@@ -13,10 +15,11 @@ class CarController {
           model: true,
           year: true,
           price: true,
+          fueltype: true,
           isActive: true,
         },
         orderBy: {
-          year: "desc",
+          id: "asc",
         },
       });
       //returnerer data som JSOn
@@ -26,8 +29,89 @@ class CarController {
     }
   };
 
-  //getRecord = async (req: Request, res: Response) => {};
+  getRecord = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+      const data = await prisma.car.findUnique({
+        select: {
+          id: true,
+          category: true,
+          brand: true,
+          model: true,
+          year: true,
+          fueltype: true,
+          isActive: true,
+          createAt: true,
+        },
+        // where clause - Leder efter noget hvor en betingelse er opfyldt
+        where: {
+          id: Number(id),
+        },
+      });
+      return res.status(200).json(data);
+    } catch (error) {
+      console.error(`Kunne ikke oprette produktet ${error}`);
+    }
+  };
 
-  //createRecord = async (req: Request, res: Response) => {};
+  createRecord = async (req: Request, res: Response) => {
+    console.log(req.body);
+
+    const { category, brand, model, year, fueltype, isActive } = req.body;
+
+    if (!brand || !model) {
+      console.error("Brand og model må ikke være tomme");
+    }
+    try {
+      const data = await prisma.car.create({
+        data: {
+          category: category,
+          brand: brand,
+          model: model,
+          year: Number(year),
+          fueltype: fueltype,
+          isActive: Boolean(JSON.parse(isActive)),
+        },
+      });
+      return res.status(201).json(data);
+    } catch (error) {
+      console.error(`Kan ikke oprette produkterne: ${error}`);
+    }
+  };
+  updateRecord = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    const { category, brand, model, year, fueltype, isActive } = req.body;
+    try {
+      const data = await prisma.car.update({
+        where: { id },
+        data: {
+          category: category,
+          brand: brand,
+          model: model,
+          year: Number(year),
+          fueltype: fueltype,
+          isActive: Boolean(isActive),
+        },
+      });
+      res.send(data);
+    } catch (error) {
+      `Kunne ikke opdatere produktet ${error}`;
+    }
+  };
+  deleteRecord = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    try {
+      const data = await prisma.car.delete({
+        where: { id },
+      });
+      return res.status(200).json({
+        message: `Bil nr ${id} er nu slettet`,
+      });
+    } catch (error) {
+      {
+        `Kunne ikke slette produktet ${error}`;
+      }
+    }
+  };
 }
 export const carController = new CarController();

@@ -11,6 +11,8 @@ dotenv.config();
 const port = process.env.PORT;
 // Opretter express objekt
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Forsiden");
