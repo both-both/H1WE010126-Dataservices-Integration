@@ -1,21 +1,12 @@
-import { Request, Response, Router } from "express";
-import { carController } from "../controller/carController.js";
+import { Router } from "express";
+import { brandController } from "../controller/brandController.js";
 const router = Router();
 
-// Route til liste af biler - base route i index.ts er /biler
-router.get("/", carController.getRecords);
-router.get("/:id", carController.getRecord);
-router.post("/", carController.createRecord);
-router.put("/:id", carController.updateRecord);
-router.delete("/:id", carController.deleteRecord);
+// Route til liste af brands - base route i index.ts er /biler/brands
+router.get("/", brandController.getRecords);
+router.get("/:id", brandController.getRecord);
+router.post("/", brandController.createRecord);
+router.put("/:id", brandController.updateRecord);
+router.delete("/:id", brandController.deleteRecord);
 
-router.get("/:brand", (req: Request, res: Response) => {
-  const { brand } = req.params;
-  res.send(`Her liste detajler over vores ${brand}`);
-});
-router.get("/:brand/:model", (req: Request, res: Response) => {
-  const { brand, model } = req.params;
-  res.send(`Detaljer om ${brand} ${model}`);
-});
-
-export const carRoutes = router;
+export const brandRoutes = router;

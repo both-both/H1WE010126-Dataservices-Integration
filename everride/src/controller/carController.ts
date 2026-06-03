@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { prisma } from "../prisma.js";
-import { json } from "node:stream/consumers";
 
 // Defination af klasse
 class CarController {
@@ -22,7 +21,7 @@ class CarController {
           id: "asc",
         },
       });
-      //returnerer data som JSOn
+      //returnerer data som JSON
       return res.json(data);
     } catch (error) {
       console.error(`Fejl i API kald: ${error}`);
@@ -55,8 +54,6 @@ class CarController {
   };
 
   createRecord = async (req: Request, res: Response) => {
-    console.log(req.body);
-
     const { category, brand, model, year, fueltype, isActive } = req.body;
 
     if (!brand || !model) {
@@ -95,7 +92,7 @@ class CarController {
       });
       res.send(data);
     } catch (error) {
-      `Kunne ikke opdatere produktet ${error}`;
+      console.error(`Kunne ikke opdatere produktet ${error}`);
     }
   };
   deleteRecord = async (req: Request, res: Response) => {
@@ -108,9 +105,7 @@ class CarController {
         message: `Bil nr ${id} er nu slettet`,
       });
     } catch (error) {
-      {
-        `Kunne ikke slette produktet ${error}`;
-      }
+      console.error(`Kunne ikke slette produktet ${error}`);
     }
   };
 }
