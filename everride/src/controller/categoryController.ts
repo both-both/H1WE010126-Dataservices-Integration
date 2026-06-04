@@ -2,16 +2,15 @@ import { Request, response, Response } from "express";
 import { prisma } from "../prisma.js";
 
 // Defination af klasse
-class BrandController {
+class CategoryController {
   // Metode til at hente alle brands
   getRecords = async (req: Request, res: Response) => {
     // Henter alle brands fra databasen
     try {
-      const data = await prisma.brand.findMany({
+      const data = await prisma.category.findMany({
         select: {
           id: true,
           name: true,
-          logo: true,
         },
         orderBy: {
           name: "asc",
@@ -28,70 +27,62 @@ class BrandController {
 
     try {
       const data = await prisma.brand.findUnique({
-        select: {
-          id: true,
-          name: true,
-          logo: true,
-        },
         where: {
           id: Number(id),
         },
       });
       return res.status(200).json(data);
     } catch (error) {
-      console.error(`Kunne ikke oprette produktet ${error}`);
+      console.error(`Kunne ikke oprette emne ${error}`);
     }
   };
-  createRecord = async (req: Request, res: Response) => {
-    const { name, logo } = req.body;
 
-    if (!name || !logo) {
-      console.error("Nave og logo må ikke være tomme");
+  createRecord = async (req: Request, res: Response) => {
+    const { name } = req.body;
+
+    if (!name) {
+      console.error("Navn må ikke være tomt");
     }
     try {
-      const data = await prisma.brand.create({
+      const data = await prisma.category.create({
         data: {
           name: name,
-          logo: logo,
         },
       });
       return res.status(201).json(data);
     } catch (error) {
-      console.error(`Kan ikke oprette brands: ${error}`);
+      console.error(`Kan ikke oprette kategori`);
     }
   };
   updateRecord = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
-    const { name, logo } = req.body;
+    const { name } = req.body;
     try {
-      const data = await prisma.brand.update({
+      const data = await prisma.category.update({
         where: { id },
         data: {
           name: name,
-          logo: logo,
         },
       });
       res.send(data);
     } catch (error) {
-      console.error(`Kunne ikke opdatere brandet
-         ${error}`);
+      console.error(`Kunne ikke opdatere kategorien ${error}`);
     }
   };
   deleteRecord = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
     try {
-      const data = await prisma.brand.delete;
-      ({
+      const data = await prisma.category.delete({
         where: { id },
       });
       return res.status(200).json({
-        message: `Brand nr ${id} er nu slettet`,
+        message: `kategori nr ${id} er nu slettet`,
       });
     } catch (error) {
-      console.error(`Kunne ikke slette produktet ${error}`);
+      console.error(`Kunne ikke slette kategorien ${error}`);
     }
   };
 }
 
 // Eksporterer en instans af controller klassen
-export const brandController = new BrandController();
+export const categoryController = new CategoryController();
