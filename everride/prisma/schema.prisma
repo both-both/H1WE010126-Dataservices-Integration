@@ -11,15 +11,18 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+enum Role{
+  USER
+  ADMIN
+}
 
 model User {
   id Int @id @default(autoincrement()) // Felt til primær nøgle
   firstname String // Felt til tekst
   lastname String
-  phone Int // Felt til heltal (Integer)
   email String @unique // Felt til tekst med unik værdi
   password String
-  height Float @default(0.00) // Felt til decimaltal
+  role Role
   isActive Boolean @default(false) // Felt til boolean (true/false)
   createdAt DateTime @default(now()) // Felt til datotid
   updatedAt DateTime @updatedAt

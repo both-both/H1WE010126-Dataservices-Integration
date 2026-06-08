@@ -494,6 +494,14 @@ export type CarOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type FloatFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type CarCreateNestedManyWithoutCategoryInput = {
   create?: Prisma.XOR<Prisma.CarCreateWithoutCategoryInput, Prisma.CarUncheckedCreateWithoutCategoryInput> | Prisma.CarCreateWithoutCategoryInput[] | Prisma.CarUncheckedCreateWithoutCategoryInput[]
   connectOrCreate?: Prisma.CarCreateOrConnectWithoutCategoryInput | Prisma.CarCreateOrConnectWithoutCategoryInput[]

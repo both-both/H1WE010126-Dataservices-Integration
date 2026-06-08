@@ -79,7 +79,7 @@ class CarController {
           model: model,
           year: Number(year),
           fueltype: fueltype,
-          isActive: isActive === "true",
+          isActive: Boolean(JSON.parse(isActive)),
           brand: {
             connect: { id: Number(brandId) },
           },
