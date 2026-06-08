@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `car` model and its related types.
+ * This file exports the `Car` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
- * Model car
+ * Model Car
  * 
  */
-export type carModel = runtime.Types.Result.DefaultSelection<Prisma.$carPayload>
+export type CarModel = runtime.Types.Result.DefaultSelection<Prisma.$CarPayload>
 
 export type AggregateCar = {
   _count: CarCountAggregateOutputType | null
@@ -28,20 +28,24 @@ export type AggregateCar = {
 
 export type CarAvgAggregateOutputType = {
   id: number | null
+  brandId: number | null
+  categoryId: number | null
   year: number | null
   price: number | null
 }
 
 export type CarSumAggregateOutputType = {
   id: number | null
+  brandId: number | null
+  categoryId: number | null
   year: number | null
   price: number | null
 }
 
 export type CarMinAggregateOutputType = {
   id: number | null
-  category: string | null
-  brand: string | null
+  brandId: number | null
+  categoryId: number | null
   model: string | null
   year: number | null
   price: number | null
@@ -53,8 +57,8 @@ export type CarMinAggregateOutputType = {
 
 export type CarMaxAggregateOutputType = {
   id: number | null
-  category: string | null
-  brand: string | null
+  brandId: number | null
+  categoryId: number | null
   model: string | null
   year: number | null
   price: number | null
@@ -66,8 +70,8 @@ export type CarMaxAggregateOutputType = {
 
 export type CarCountAggregateOutputType = {
   id: number
-  category: number
-  brand: number
+  brandId: number
+  categoryId: number
   model: number
   year: number
   price: number
@@ -81,20 +85,24 @@ export type CarCountAggregateOutputType = {
 
 export type CarAvgAggregateInputType = {
   id?: true
+  brandId?: true
+  categoryId?: true
   year?: true
   price?: true
 }
 
 export type CarSumAggregateInputType = {
   id?: true
+  brandId?: true
+  categoryId?: true
   year?: true
   price?: true
 }
 
 export type CarMinAggregateInputType = {
   id?: true
-  category?: true
-  brand?: true
+  brandId?: true
+  categoryId?: true
   model?: true
   year?: true
   price?: true
@@ -106,8 +114,8 @@ export type CarMinAggregateInputType = {
 
 export type CarMaxAggregateInputType = {
   id?: true
-  category?: true
-  brand?: true
+  brandId?: true
+  categoryId?: true
   model?: true
   year?: true
   price?: true
@@ -119,8 +127,8 @@ export type CarMaxAggregateInputType = {
 
 export type CarCountAggregateInputType = {
   id?: true
-  category?: true
-  brand?: true
+  brandId?: true
+  categoryId?: true
   model?: true
   year?: true
   price?: true
@@ -133,37 +141,37 @@ export type CarCountAggregateInputType = {
 
 export type CarAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which car to aggregate.
+   * Filter which Car to aggregate.
    */
-  where?: Prisma.carWhereInput
+  where?: Prisma.CarWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of cars to fetch.
+   * Determine the order of Cars to fetch.
    */
-  orderBy?: Prisma.carOrderByWithRelationInput | Prisma.carOrderByWithRelationInput[]
+  orderBy?: Prisma.CarOrderByWithRelationInput | Prisma.CarOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.carWhereUniqueInput
+  cursor?: Prisma.CarWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` cars from the position of the cursor.
+   * Take `±n` Cars from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` cars.
+   * Skip the first `n` Cars.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned cars
+   * Count returned Cars
   **/
   _count?: true | CarCountAggregateInputType
   /**
@@ -203,11 +211,11 @@ export type GetCarAggregateType<T extends CarAggregateArgs> = {
 
 
 
-export type carGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.carWhereInput
-  orderBy?: Prisma.carOrderByWithAggregationInput | Prisma.carOrderByWithAggregationInput[]
+export type CarGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarWhereInput
+  orderBy?: Prisma.CarOrderByWithAggregationInput | Prisma.CarOrderByWithAggregationInput[]
   by: Prisma.CarScalarFieldEnum[] | Prisma.CarScalarFieldEnum
-  having?: Prisma.carScalarWhereWithAggregatesInput
+  having?: Prisma.CarScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: CarCountAggregateInputType | true
@@ -219,8 +227,8 @@ export type carGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type CarGroupByOutputType = {
   id: number
-  category: string
-  brand: string
+  brandId: number
+  categoryId: number
   model: string
   year: number
   price: number
@@ -235,7 +243,7 @@ export type CarGroupByOutputType = {
   _max: CarMaxAggregateOutputType | null
 }
 
-export type GetCarGroupByPayload<T extends carGroupByArgs> = Prisma.PrismaPromise<
+export type GetCarGroupByPayload<T extends CarGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<CarGroupByOutputType, T['by']> &
       {
@@ -250,26 +258,28 @@ export type GetCarGroupByPayload<T extends carGroupByArgs> = Prisma.PrismaPromis
 
 
 
-export type carWhereInput = {
-  AND?: Prisma.carWhereInput | Prisma.carWhereInput[]
-  OR?: Prisma.carWhereInput[]
-  NOT?: Prisma.carWhereInput | Prisma.carWhereInput[]
-  id?: Prisma.IntFilter<"car"> | number
-  category?: Prisma.StringFilter<"car"> | string
-  brand?: Prisma.StringFilter<"car"> | string
-  model?: Prisma.StringFilter<"car"> | string
-  year?: Prisma.IntFilter<"car"> | number
-  price?: Prisma.FloatFilter<"car"> | number
-  fueltype?: Prisma.StringFilter<"car"> | string
-  hasTowBar?: Prisma.BoolFilter<"car"> | boolean
-  isActive?: Prisma.BoolFilter<"car"> | boolean
-  createAt?: Prisma.DateTimeFilter<"car"> | Date | string
+export type CarWhereInput = {
+  AND?: Prisma.CarWhereInput | Prisma.CarWhereInput[]
+  OR?: Prisma.CarWhereInput[]
+  NOT?: Prisma.CarWhereInput | Prisma.CarWhereInput[]
+  id?: Prisma.IntFilter<"Car"> | number
+  brandId?: Prisma.IntFilter<"Car"> | number
+  categoryId?: Prisma.IntFilter<"Car"> | number
+  model?: Prisma.StringFilter<"Car"> | string
+  year?: Prisma.IntFilter<"Car"> | number
+  price?: Prisma.FloatFilter<"Car"> | number
+  fueltype?: Prisma.StringFilter<"Car"> | string
+  hasTowBar?: Prisma.BoolFilter<"Car"> | boolean
+  isActive?: Prisma.BoolFilter<"Car"> | boolean
+  createAt?: Prisma.DateTimeFilter<"Car"> | Date | string
+  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
+  category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
 }
 
-export type carOrderByWithRelationInput = {
+export type CarOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  brand?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
@@ -277,28 +287,32 @@ export type carOrderByWithRelationInput = {
   hasTowBar?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
+  brand?: Prisma.BrandOrderByWithRelationInput
+  category?: Prisma.CategoryOrderByWithRelationInput
 }
 
-export type carWhereUniqueInput = Prisma.AtLeast<{
+export type CarWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  AND?: Prisma.carWhereInput | Prisma.carWhereInput[]
-  OR?: Prisma.carWhereInput[]
-  NOT?: Prisma.carWhereInput | Prisma.carWhereInput[]
-  category?: Prisma.StringFilter<"car"> | string
-  brand?: Prisma.StringFilter<"car"> | string
-  model?: Prisma.StringFilter<"car"> | string
-  year?: Prisma.IntFilter<"car"> | number
-  price?: Prisma.FloatFilter<"car"> | number
-  fueltype?: Prisma.StringFilter<"car"> | string
-  hasTowBar?: Prisma.BoolFilter<"car"> | boolean
-  isActive?: Prisma.BoolFilter<"car"> | boolean
-  createAt?: Prisma.DateTimeFilter<"car"> | Date | string
+  AND?: Prisma.CarWhereInput | Prisma.CarWhereInput[]
+  OR?: Prisma.CarWhereInput[]
+  NOT?: Prisma.CarWhereInput | Prisma.CarWhereInput[]
+  brandId?: Prisma.IntFilter<"Car"> | number
+  categoryId?: Prisma.IntFilter<"Car"> | number
+  model?: Prisma.StringFilter<"Car"> | string
+  year?: Prisma.IntFilter<"Car"> | number
+  price?: Prisma.FloatFilter<"Car"> | number
+  fueltype?: Prisma.StringFilter<"Car"> | string
+  hasTowBar?: Prisma.BoolFilter<"Car"> | boolean
+  isActive?: Prisma.BoolFilter<"Car"> | boolean
+  createAt?: Prisma.DateTimeFilter<"Car"> | Date | string
+  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
+  category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
 }, "id">
 
-export type carOrderByWithAggregationInput = {
+export type CarOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  brand?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
@@ -306,32 +320,30 @@ export type carOrderByWithAggregationInput = {
   hasTowBar?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
-  _count?: Prisma.carCountOrderByAggregateInput
-  _avg?: Prisma.carAvgOrderByAggregateInput
-  _max?: Prisma.carMaxOrderByAggregateInput
-  _min?: Prisma.carMinOrderByAggregateInput
-  _sum?: Prisma.carSumOrderByAggregateInput
+  _count?: Prisma.CarCountOrderByAggregateInput
+  _avg?: Prisma.CarAvgOrderByAggregateInput
+  _max?: Prisma.CarMaxOrderByAggregateInput
+  _min?: Prisma.CarMinOrderByAggregateInput
+  _sum?: Prisma.CarSumOrderByAggregateInput
 }
 
-export type carScalarWhereWithAggregatesInput = {
-  AND?: Prisma.carScalarWhereWithAggregatesInput | Prisma.carScalarWhereWithAggregatesInput[]
-  OR?: Prisma.carScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.carScalarWhereWithAggregatesInput | Prisma.carScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"car"> | number
-  category?: Prisma.StringWithAggregatesFilter<"car"> | string
-  brand?: Prisma.StringWithAggregatesFilter<"car"> | string
-  model?: Prisma.StringWithAggregatesFilter<"car"> | string
-  year?: Prisma.IntWithAggregatesFilter<"car"> | number
-  price?: Prisma.FloatWithAggregatesFilter<"car"> | number
-  fueltype?: Prisma.StringWithAggregatesFilter<"car"> | string
-  hasTowBar?: Prisma.BoolWithAggregatesFilter<"car"> | boolean
-  isActive?: Prisma.BoolWithAggregatesFilter<"car"> | boolean
-  createAt?: Prisma.DateTimeWithAggregatesFilter<"car"> | Date | string
+export type CarScalarWhereWithAggregatesInput = {
+  AND?: Prisma.CarScalarWhereWithAggregatesInput | Prisma.CarScalarWhereWithAggregatesInput[]
+  OR?: Prisma.CarScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.CarScalarWhereWithAggregatesInput | Prisma.CarScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"Car"> | number
+  brandId?: Prisma.IntWithAggregatesFilter<"Car"> | number
+  categoryId?: Prisma.IntWithAggregatesFilter<"Car"> | number
+  model?: Prisma.StringWithAggregatesFilter<"Car"> | string
+  year?: Prisma.IntWithAggregatesFilter<"Car"> | number
+  price?: Prisma.FloatWithAggregatesFilter<"Car"> | number
+  fueltype?: Prisma.StringWithAggregatesFilter<"Car"> | string
+  hasTowBar?: Prisma.BoolWithAggregatesFilter<"Car"> | boolean
+  isActive?: Prisma.BoolWithAggregatesFilter<"Car"> | boolean
+  createAt?: Prisma.DateTimeWithAggregatesFilter<"Car"> | Date | string
 }
 
-export type carCreateInput = {
-  category: string
-  brand: string
+export type CarCreateInput = {
   model: string
   year: number
   price?: number
@@ -339,12 +351,14 @@ export type carCreateInput = {
   hasTowBar?: boolean
   isActive?: boolean
   createAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutCarsInput
+  category: Prisma.CategoryCreateNestedOneWithoutCarsInput
 }
 
-export type carUncheckedCreateInput = {
+export type CarUncheckedCreateInput = {
   id?: number
-  category: string
-  brand: string
+  brandId: number
+  categoryId: number
   model: string
   year: number
   price?: number
@@ -354,9 +368,7 @@ export type carUncheckedCreateInput = {
   createAt?: Date | string
 }
 
-export type carUpdateInput = {
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  brand?: Prisma.StringFieldUpdateOperationsInput | string
+export type CarUpdateInput = {
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -364,12 +376,14 @@ export type carUpdateInput = {
   hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
+  category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
 }
 
-export type carUncheckedUpdateInput = {
+export type CarUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -379,10 +393,10 @@ export type carUncheckedUpdateInput = {
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type carCreateManyInput = {
+export type CarCreateManyInput = {
   id?: number
-  category: string
-  brand: string
+  brandId: number
+  categoryId: number
   model: string
   year: number
   price?: number
@@ -392,9 +406,7 @@ export type carCreateManyInput = {
   createAt?: Date | string
 }
 
-export type carUpdateManyMutationInput = {
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  brand?: Prisma.StringFieldUpdateOperationsInput | string
+export type CarUpdateManyMutationInput = {
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -404,10 +416,10 @@ export type carUpdateManyMutationInput = {
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type carUncheckedUpdateManyInput = {
+export type CarUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  brand?: Prisma.StringFieldUpdateOperationsInput | string
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -417,10 +429,10 @@ export type carUncheckedUpdateManyInput = {
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type carCountOrderByAggregateInput = {
+export type CarCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  brand?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
@@ -430,16 +442,18 @@ export type carCountOrderByAggregateInput = {
   createAt?: Prisma.SortOrder
 }
 
-export type carAvgOrderByAggregateInput = {
+export type CarAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
 }
 
-export type carMaxOrderByAggregateInput = {
+export type CarMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  brand?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
@@ -449,10 +463,10 @@ export type carMaxOrderByAggregateInput = {
   createAt?: Prisma.SortOrder
 }
 
-export type carMinOrderByAggregateInput = {
+export type CarMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  brand?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
@@ -462,18 +476,320 @@ export type carMinOrderByAggregateInput = {
   createAt?: Prisma.SortOrder
 }
 
-export type carSumOrderByAggregateInput = {
+export type CarSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   year?: Prisma.SortOrder
   price?: Prisma.SortOrder
 }
 
+export type CarListRelationFilter = {
+  every?: Prisma.CarWhereInput
+  some?: Prisma.CarWhereInput
+  none?: Prisma.CarWhereInput
+}
+
+export type CarOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type CarCreateNestedManyWithoutCategoryInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutCategoryInput, Prisma.CarUncheckedCreateWithoutCategoryInput> | Prisma.CarCreateWithoutCategoryInput[] | Prisma.CarUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutCategoryInput | Prisma.CarCreateOrConnectWithoutCategoryInput[]
+  createMany?: Prisma.CarCreateManyCategoryInputEnvelope
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+}
+
+export type CarUncheckedCreateNestedManyWithoutCategoryInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutCategoryInput, Prisma.CarUncheckedCreateWithoutCategoryInput> | Prisma.CarCreateWithoutCategoryInput[] | Prisma.CarUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutCategoryInput | Prisma.CarCreateOrConnectWithoutCategoryInput[]
+  createMany?: Prisma.CarCreateManyCategoryInputEnvelope
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+}
+
+export type CarUpdateManyWithoutCategoryNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutCategoryInput, Prisma.CarUncheckedCreateWithoutCategoryInput> | Prisma.CarCreateWithoutCategoryInput[] | Prisma.CarUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutCategoryInput | Prisma.CarCreateOrConnectWithoutCategoryInput[]
+  upsert?: Prisma.CarUpsertWithWhereUniqueWithoutCategoryInput | Prisma.CarUpsertWithWhereUniqueWithoutCategoryInput[]
+  createMany?: Prisma.CarCreateManyCategoryInputEnvelope
+  set?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  disconnect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  delete?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  update?: Prisma.CarUpdateWithWhereUniqueWithoutCategoryInput | Prisma.CarUpdateWithWhereUniqueWithoutCategoryInput[]
+  updateMany?: Prisma.CarUpdateManyWithWhereWithoutCategoryInput | Prisma.CarUpdateManyWithWhereWithoutCategoryInput[]
+  deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+}
+
+export type CarUncheckedUpdateManyWithoutCategoryNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutCategoryInput, Prisma.CarUncheckedCreateWithoutCategoryInput> | Prisma.CarCreateWithoutCategoryInput[] | Prisma.CarUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutCategoryInput | Prisma.CarCreateOrConnectWithoutCategoryInput[]
+  upsert?: Prisma.CarUpsertWithWhereUniqueWithoutCategoryInput | Prisma.CarUpsertWithWhereUniqueWithoutCategoryInput[]
+  createMany?: Prisma.CarCreateManyCategoryInputEnvelope
+  set?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  disconnect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  delete?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  update?: Prisma.CarUpdateWithWhereUniqueWithoutCategoryInput | Prisma.CarUpdateWithWhereUniqueWithoutCategoryInput[]
+  updateMany?: Prisma.CarUpdateManyWithWhereWithoutCategoryInput | Prisma.CarUpdateManyWithWhereWithoutCategoryInput[]
+  deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+}
+
+export type CarCreateNestedManyWithoutBrandInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutBrandInput, Prisma.CarUncheckedCreateWithoutBrandInput> | Prisma.CarCreateWithoutBrandInput[] | Prisma.CarUncheckedCreateWithoutBrandInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutBrandInput | Prisma.CarCreateOrConnectWithoutBrandInput[]
+  createMany?: Prisma.CarCreateManyBrandInputEnvelope
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+}
+
+export type CarUncheckedCreateNestedManyWithoutBrandInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutBrandInput, Prisma.CarUncheckedCreateWithoutBrandInput> | Prisma.CarCreateWithoutBrandInput[] | Prisma.CarUncheckedCreateWithoutBrandInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutBrandInput | Prisma.CarCreateOrConnectWithoutBrandInput[]
+  createMany?: Prisma.CarCreateManyBrandInputEnvelope
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+}
+
+export type CarUpdateManyWithoutBrandNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutBrandInput, Prisma.CarUncheckedCreateWithoutBrandInput> | Prisma.CarCreateWithoutBrandInput[] | Prisma.CarUncheckedCreateWithoutBrandInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutBrandInput | Prisma.CarCreateOrConnectWithoutBrandInput[]
+  upsert?: Prisma.CarUpsertWithWhereUniqueWithoutBrandInput | Prisma.CarUpsertWithWhereUniqueWithoutBrandInput[]
+  createMany?: Prisma.CarCreateManyBrandInputEnvelope
+  set?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  disconnect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  delete?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  update?: Prisma.CarUpdateWithWhereUniqueWithoutBrandInput | Prisma.CarUpdateWithWhereUniqueWithoutBrandInput[]
+  updateMany?: Prisma.CarUpdateManyWithWhereWithoutBrandInput | Prisma.CarUpdateManyWithWhereWithoutBrandInput[]
+  deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+}
+
+export type CarUncheckedUpdateManyWithoutBrandNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutBrandInput, Prisma.CarUncheckedCreateWithoutBrandInput> | Prisma.CarCreateWithoutBrandInput[] | Prisma.CarUncheckedCreateWithoutBrandInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutBrandInput | Prisma.CarCreateOrConnectWithoutBrandInput[]
+  upsert?: Prisma.CarUpsertWithWhereUniqueWithoutBrandInput | Prisma.CarUpsertWithWhereUniqueWithoutBrandInput[]
+  createMany?: Prisma.CarCreateManyBrandInputEnvelope
+  set?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  disconnect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  delete?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  update?: Prisma.CarUpdateWithWhereUniqueWithoutBrandInput | Prisma.CarUpdateWithWhereUniqueWithoutBrandInput[]
+  updateMany?: Prisma.CarUpdateManyWithWhereWithoutBrandInput | Prisma.CarUpdateManyWithWhereWithoutBrandInput[]
+  deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+}
+
+export type CarCreateWithoutCategoryInput = {
+  model: string
+  year: number
+  price?: number
+  fueltype: string
+  hasTowBar?: boolean
+  isActive?: boolean
+  createAt?: Date | string
+  brand: Prisma.BrandCreateNestedOneWithoutCarsInput
+}
+
+export type CarUncheckedCreateWithoutCategoryInput = {
+  id?: number
+  brandId: number
+  model: string
+  year: number
+  price?: number
+  fueltype: string
+  hasTowBar?: boolean
+  isActive?: boolean
+  createAt?: Date | string
+}
+
+export type CarCreateOrConnectWithoutCategoryInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutCategoryInput, Prisma.CarUncheckedCreateWithoutCategoryInput>
+}
+
+export type CarCreateManyCategoryInputEnvelope = {
+  data: Prisma.CarCreateManyCategoryInput | Prisma.CarCreateManyCategoryInput[]
+}
+
+export type CarUpsertWithWhereUniqueWithoutCategoryInput = {
+  where: Prisma.CarWhereUniqueInput
+  update: Prisma.XOR<Prisma.CarUpdateWithoutCategoryInput, Prisma.CarUncheckedUpdateWithoutCategoryInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutCategoryInput, Prisma.CarUncheckedCreateWithoutCategoryInput>
+}
+
+export type CarUpdateWithWhereUniqueWithoutCategoryInput = {
+  where: Prisma.CarWhereUniqueInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutCategoryInput, Prisma.CarUncheckedUpdateWithoutCategoryInput>
+}
+
+export type CarUpdateManyWithWhereWithoutCategoryInput = {
+  where: Prisma.CarScalarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyWithoutCategoryInput>
+}
+
+export type CarScalarWhereInput = {
+  AND?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+  OR?: Prisma.CarScalarWhereInput[]
+  NOT?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+  id?: Prisma.IntFilter<"Car"> | number
+  brandId?: Prisma.IntFilter<"Car"> | number
+  categoryId?: Prisma.IntFilter<"Car"> | number
+  model?: Prisma.StringFilter<"Car"> | string
+  year?: Prisma.IntFilter<"Car"> | number
+  price?: Prisma.FloatFilter<"Car"> | number
+  fueltype?: Prisma.StringFilter<"Car"> | string
+  hasTowBar?: Prisma.BoolFilter<"Car"> | boolean
+  isActive?: Prisma.BoolFilter<"Car"> | boolean
+  createAt?: Prisma.DateTimeFilter<"Car"> | Date | string
+}
+
+export type CarCreateWithoutBrandInput = {
+  model: string
+  year: number
+  price?: number
+  fueltype: string
+  hasTowBar?: boolean
+  isActive?: boolean
+  createAt?: Date | string
+  category: Prisma.CategoryCreateNestedOneWithoutCarsInput
+}
+
+export type CarUncheckedCreateWithoutBrandInput = {
+  id?: number
+  categoryId: number
+  model: string
+  year: number
+  price?: number
+  fueltype: string
+  hasTowBar?: boolean
+  isActive?: boolean
+  createAt?: Date | string
+}
+
+export type CarCreateOrConnectWithoutBrandInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutBrandInput, Prisma.CarUncheckedCreateWithoutBrandInput>
+}
+
+export type CarCreateManyBrandInputEnvelope = {
+  data: Prisma.CarCreateManyBrandInput | Prisma.CarCreateManyBrandInput[]
+}
+
+export type CarUpsertWithWhereUniqueWithoutBrandInput = {
+  where: Prisma.CarWhereUniqueInput
+  update: Prisma.XOR<Prisma.CarUpdateWithoutBrandInput, Prisma.CarUncheckedUpdateWithoutBrandInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutBrandInput, Prisma.CarUncheckedCreateWithoutBrandInput>
+}
+
+export type CarUpdateWithWhereUniqueWithoutBrandInput = {
+  where: Prisma.CarWhereUniqueInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutBrandInput, Prisma.CarUncheckedUpdateWithoutBrandInput>
+}
+
+export type CarUpdateManyWithWhereWithoutBrandInput = {
+  where: Prisma.CarScalarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyWithoutBrandInput>
+}
+
+export type CarCreateManyCategoryInput = {
+  id?: number
+  brandId: number
+  model: string
+  year: number
+  price?: number
+  fueltype: string
+  hasTowBar?: boolean
+  isActive?: boolean
+  createAt?: Date | string
+}
+
+export type CarUpdateWithoutCategoryInput = {
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
+  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
+}
+
+export type CarUncheckedUpdateWithoutCategoryInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
+  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CarUncheckedUpdateManyWithoutCategoryInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
+  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CarCreateManyBrandInput = {
+  id?: number
+  categoryId: number
+  model: string
+  year: number
+  price?: number
+  fueltype: string
+  hasTowBar?: boolean
+  isActive?: boolean
+  createAt?: Date | string
+}
+
+export type CarUpdateWithoutBrandInput = {
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
+  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
+}
+
+export type CarUncheckedUpdateWithoutBrandInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
+  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CarUncheckedUpdateManyWithoutBrandInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
+  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
 
 
-export type carSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+
+export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  category?: boolean
-  brand?: boolean
+  brandId?: boolean
+  categoryId?: boolean
   model?: boolean
   year?: boolean
   price?: boolean
@@ -481,12 +797,14 @@ export type carSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   hasTowBar?: boolean
   isActive?: boolean
   createAt?: boolean
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
-export type carSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type CarSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  category?: boolean
-  brand?: boolean
+  brandId?: boolean
+  categoryId?: boolean
   model?: boolean
   year?: boolean
   price?: boolean
@@ -494,12 +812,14 @@ export type carSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   hasTowBar?: boolean
   isActive?: boolean
   createAt?: boolean
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
-export type carSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type CarSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  category?: boolean
-  brand?: boolean
+  brandId?: boolean
+  categoryId?: boolean
   model?: boolean
   year?: boolean
   price?: boolean
@@ -507,12 +827,14 @@ export type carSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   hasTowBar?: boolean
   isActive?: boolean
   createAt?: boolean
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
-export type carSelectScalar = {
+export type CarSelectScalar = {
   id?: boolean
-  category?: boolean
-  brand?: boolean
+  brandId?: boolean
+  categoryId?: boolean
   model?: boolean
   year?: boolean
   price?: boolean
@@ -522,15 +844,30 @@ export type carSelectScalar = {
   createAt?: boolean
 }
 
-export type carOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "category" | "brand" | "model" | "year" | "price" | "fueltype" | "hasTowBar" | "isActive" | "createAt", ExtArgs["result"]["car"]>
+export type CarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "categoryId" | "model" | "year" | "price" | "fueltype" | "hasTowBar" | "isActive" | "createAt", ExtArgs["result"]["car"]>
+export type CarInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+}
+export type CarIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+}
+export type CarIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+}
 
-export type $carPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "car"
-  objects: {}
+export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "Car"
+  objects: {
+    brand: Prisma.$BrandPayload<ExtArgs>
+    category: Prisma.$CategoryPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    category: string
-    brand: string
+    brandId: number
+    categoryId: number
     model: string
     year: number
     price: number
@@ -542,18 +879,18 @@ export type $carPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   composites: {}
 }
 
-export type carGetPayload<S extends boolean | null | undefined | carDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$carPayload, S>
+export type CarGetPayload<S extends boolean | null | undefined | CarDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$CarPayload, S>
 
-export type carCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<carFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type CarCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<CarFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: CarCountAggregateInputType | true
   }
 
-export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['car'], meta: { name: 'car' } }
+export interface CarDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Car'], meta: { name: 'Car' } }
   /**
    * Find zero or one Car that matches the filter.
-   * @param {carFindUniqueArgs} args - Arguments to find a Car
+   * @param {CarFindUniqueArgs} args - Arguments to find a Car
    * @example
    * // Get one Car
    * const car = await prisma.car.findUnique({
@@ -562,12 +899,12 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   }
    * })
    */
-  findUnique<T extends carFindUniqueArgs>(args: Prisma.SelectSubset<T, carFindUniqueArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends CarFindUniqueArgs>(args: Prisma.SelectSubset<T, CarFindUniqueArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one Car that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {carFindUniqueOrThrowArgs} args - Arguments to find a Car
+   * @param {CarFindUniqueOrThrowArgs} args - Arguments to find a Car
    * @example
    * // Get one Car
    * const car = await prisma.car.findUniqueOrThrow({
@@ -576,13 +913,13 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   }
    * })
    */
-  findUniqueOrThrow<T extends carFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, carFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends CarFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, CarFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Car that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {carFindFirstArgs} args - Arguments to find a Car
+   * @param {CarFindFirstArgs} args - Arguments to find a Car
    * @example
    * // Get one Car
    * const car = await prisma.car.findFirst({
@@ -591,14 +928,14 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   }
    * })
    */
-  findFirst<T extends carFindFirstArgs>(args?: Prisma.SelectSubset<T, carFindFirstArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends CarFindFirstArgs>(args?: Prisma.SelectSubset<T, CarFindFirstArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Car that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {carFindFirstOrThrowArgs} args - Arguments to find a Car
+   * @param {CarFindFirstOrThrowArgs} args - Arguments to find a Car
    * @example
    * // Get one Car
    * const car = await prisma.car.findFirstOrThrow({
@@ -607,13 +944,13 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   }
    * })
    */
-  findFirstOrThrow<T extends carFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, carFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends CarFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, CarFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more Cars that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {carFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {CarFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Cars
    * const cars = await prisma.car.findMany()
@@ -625,11 +962,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * const carWithIdOnly = await prisma.car.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends carFindManyArgs>(args?: Prisma.SelectSubset<T, carFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends CarFindManyArgs>(args?: Prisma.SelectSubset<T, CarFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a Car.
-   * @param {carCreateArgs} args - Arguments to create a Car.
+   * @param {CarCreateArgs} args - Arguments to create a Car.
    * @example
    * // Create one Car
    * const Car = await prisma.car.create({
@@ -639,11 +976,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    * 
    */
-  create<T extends carCreateArgs>(args: Prisma.SelectSubset<T, carCreateArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends CarCreateArgs>(args: Prisma.SelectSubset<T, CarCreateArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many Cars.
-   * @param {carCreateManyArgs} args - Arguments to create many Cars.
+   * @param {CarCreateManyArgs} args - Arguments to create many Cars.
    * @example
    * // Create many Cars
    * const car = await prisma.car.createMany({
@@ -653,11 +990,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    *     
    */
-  createMany<T extends carCreateManyArgs>(args?: Prisma.SelectSubset<T, carCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends CarCreateManyArgs>(args?: Prisma.SelectSubset<T, CarCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create many Cars and returns the data saved in the database.
-   * @param {carCreateManyAndReturnArgs} args - Arguments to create many Cars.
+   * @param {CarCreateManyAndReturnArgs} args - Arguments to create many Cars.
    * @example
    * // Create many Cars
    * const car = await prisma.car.createManyAndReturn({
@@ -677,11 +1014,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends carCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, carCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends CarCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, CarCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Delete a Car.
-   * @param {carDeleteArgs} args - Arguments to delete one Car.
+   * @param {CarDeleteArgs} args - Arguments to delete one Car.
    * @example
    * // Delete one Car
    * const Car = await prisma.car.delete({
@@ -691,11 +1028,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    * 
    */
-  delete<T extends carDeleteArgs>(args: Prisma.SelectSubset<T, carDeleteArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends CarDeleteArgs>(args: Prisma.SelectSubset<T, CarDeleteArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one Car.
-   * @param {carUpdateArgs} args - Arguments to update one Car.
+   * @param {CarUpdateArgs} args - Arguments to update one Car.
    * @example
    * // Update one Car
    * const car = await prisma.car.update({
@@ -708,11 +1045,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    * 
    */
-  update<T extends carUpdateArgs>(args: Prisma.SelectSubset<T, carUpdateArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends CarUpdateArgs>(args: Prisma.SelectSubset<T, CarUpdateArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more Cars.
-   * @param {carDeleteManyArgs} args - Arguments to filter Cars to delete.
+   * @param {CarDeleteManyArgs} args - Arguments to filter Cars to delete.
    * @example
    * // Delete a few Cars
    * const { count } = await prisma.car.deleteMany({
@@ -722,13 +1059,13 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    * 
    */
-  deleteMany<T extends carDeleteManyArgs>(args?: Prisma.SelectSubset<T, carDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends CarDeleteManyArgs>(args?: Prisma.SelectSubset<T, CarDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Cars.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {carUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {CarUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Cars
    * const car = await prisma.car.updateMany({
@@ -741,11 +1078,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    * 
    */
-  updateMany<T extends carUpdateManyArgs>(args: Prisma.SelectSubset<T, carUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends CarUpdateManyArgs>(args: Prisma.SelectSubset<T, CarUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Cars and returns the data updated in the database.
-   * @param {carUpdateManyAndReturnArgs} args - Arguments to update many Cars.
+   * @param {CarUpdateManyAndReturnArgs} args - Arguments to update many Cars.
    * @example
    * // Update many Cars
    * const car = await prisma.car.updateManyAndReturn({
@@ -771,11 +1108,11 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends carUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, carUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends CarUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, CarUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one Car.
-   * @param {carUpsertArgs} args - Arguments to update or create a Car.
+   * @param {CarUpsertArgs} args - Arguments to update or create a Car.
    * @example
    * // Update or create a Car
    * const car = await prisma.car.upsert({
@@ -790,14 +1127,14 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   }
    * })
    */
-  upsert<T extends carUpsertArgs>(args: Prisma.SelectSubset<T, carUpsertArgs<ExtArgs>>): Prisma.Prisma__carClient<runtime.Types.Result.GetResult<Prisma.$carPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends CarUpsertArgs>(args: Prisma.SelectSubset<T, CarUpsertArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of Cars.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {carCountArgs} args - Arguments to filter Cars to count.
+   * @param {CarCountArgs} args - Arguments to filter Cars to count.
    * @example
    * // Count the number of Cars
    * const count = await prisma.car.count({
@@ -806,8 +1143,8 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   }
    * })
   **/
-  count<T extends carCountArgs>(
-    args?: Prisma.Subset<T, carCountArgs>,
+  count<T extends CarCountArgs>(
+    args?: Prisma.Subset<T, CarCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -846,7 +1183,7 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Group by Car.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {carGroupByArgs} args - Group by arguments.
+   * @param {CarGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -861,14 +1198,14 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * 
   **/
   groupBy<
-    T extends carGroupByArgs,
+    T extends CarGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: carGroupByArgs['orderBy'] }
-      : { orderBy?: carGroupByArgs['orderBy'] },
+      ? { orderBy: CarGroupByArgs['orderBy'] }
+      : { orderBy?: CarGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -917,21 +1254,23 @@ export interface carDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, carGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCarGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, CarGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCarGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the car model
+ * Fields of the Car model
  */
-readonly fields: carFieldRefs;
+readonly fields: CarFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for car.
+ * The delegate class that acts as a "Promise-like" for Car.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__carClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__CarClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  category<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -958,383 +1297,431 @@ export interface Prisma__carClient<T, Null = never, ExtArgs extends runtime.Type
 
 
 /**
- * Fields of the car model
+ * Fields of the Car model
  */
-export interface carFieldRefs {
-  readonly id: Prisma.FieldRef<"car", 'Int'>
-  readonly category: Prisma.FieldRef<"car", 'String'>
-  readonly brand: Prisma.FieldRef<"car", 'String'>
-  readonly model: Prisma.FieldRef<"car", 'String'>
-  readonly year: Prisma.FieldRef<"car", 'Int'>
-  readonly price: Prisma.FieldRef<"car", 'Float'>
-  readonly fueltype: Prisma.FieldRef<"car", 'String'>
-  readonly hasTowBar: Prisma.FieldRef<"car", 'Boolean'>
-  readonly isActive: Prisma.FieldRef<"car", 'Boolean'>
-  readonly createAt: Prisma.FieldRef<"car", 'DateTime'>
+export interface CarFieldRefs {
+  readonly id: Prisma.FieldRef<"Car", 'Int'>
+  readonly brandId: Prisma.FieldRef<"Car", 'Int'>
+  readonly categoryId: Prisma.FieldRef<"Car", 'Int'>
+  readonly model: Prisma.FieldRef<"Car", 'String'>
+  readonly year: Prisma.FieldRef<"Car", 'Int'>
+  readonly price: Prisma.FieldRef<"Car", 'Float'>
+  readonly fueltype: Prisma.FieldRef<"Car", 'String'>
+  readonly hasTowBar: Prisma.FieldRef<"Car", 'Boolean'>
+  readonly isActive: Prisma.FieldRef<"Car", 'Boolean'>
+  readonly createAt: Prisma.FieldRef<"Car", 'DateTime'>
 }
     
 
 // Custom InputTypes
 /**
- * car findUnique
+ * Car findUnique
  */
-export type carFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * Filter, which car to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where: Prisma.carWhereUniqueInput
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * Filter, which Car to fetch.
+   */
+  where: Prisma.CarWhereUniqueInput
 }
 
 /**
- * car findUniqueOrThrow
+ * Car findUniqueOrThrow
  */
-export type carFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * Filter, which car to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where: Prisma.carWhereUniqueInput
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * Filter, which Car to fetch.
+   */
+  where: Prisma.CarWhereUniqueInput
 }
 
 /**
- * car findFirst
+ * Car findFirst
  */
-export type carFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * Filter, which car to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where?: Prisma.carWhereInput
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * Filter, which Car to fetch.
+   */
+  where?: Prisma.CarWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of cars to fetch.
+   * Determine the order of Cars to fetch.
    */
-  orderBy?: Prisma.carOrderByWithRelationInput | Prisma.carOrderByWithRelationInput[]
+  orderBy?: Prisma.CarOrderByWithRelationInput | Prisma.CarOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for cars.
+   * Sets the position for searching for Cars.
    */
-  cursor?: Prisma.carWhereUniqueInput
+  cursor?: Prisma.CarWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` cars from the position of the cursor.
+   * Take `±n` Cars from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` cars.
+   * Skip the first `n` Cars.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of cars.
+   * Filter by unique combinations of Cars.
    */
   distinct?: Prisma.CarScalarFieldEnum | Prisma.CarScalarFieldEnum[]
 }
 
 /**
- * car findFirstOrThrow
+ * Car findFirstOrThrow
  */
-export type carFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * Filter, which car to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where?: Prisma.carWhereInput
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * Filter, which Car to fetch.
+   */
+  where?: Prisma.CarWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of cars to fetch.
+   * Determine the order of Cars to fetch.
    */
-  orderBy?: Prisma.carOrderByWithRelationInput | Prisma.carOrderByWithRelationInput[]
+  orderBy?: Prisma.CarOrderByWithRelationInput | Prisma.CarOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for cars.
+   * Sets the position for searching for Cars.
    */
-  cursor?: Prisma.carWhereUniqueInput
+  cursor?: Prisma.CarWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` cars from the position of the cursor.
+   * Take `±n` Cars from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` cars.
+   * Skip the first `n` Cars.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of cars.
+   * Filter by unique combinations of Cars.
    */
   distinct?: Prisma.CarScalarFieldEnum | Prisma.CarScalarFieldEnum[]
 }
 
 /**
- * car findMany
+ * Car findMany
  */
-export type carFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * Filter, which cars to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where?: Prisma.carWhereInput
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * Filter, which Cars to fetch.
+   */
+  where?: Prisma.CarWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of cars to fetch.
+   * Determine the order of Cars to fetch.
    */
-  orderBy?: Prisma.carOrderByWithRelationInput | Prisma.carOrderByWithRelationInput[]
+  orderBy?: Prisma.CarOrderByWithRelationInput | Prisma.CarOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing cars.
+   * Sets the position for listing Cars.
    */
-  cursor?: Prisma.carWhereUniqueInput
+  cursor?: Prisma.CarWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` cars from the position of the cursor.
+   * Take `±n` Cars from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` cars.
+   * Skip the first `n` Cars.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of cars.
+   * Filter by unique combinations of Cars.
    */
   distinct?: Prisma.CarScalarFieldEnum | Prisma.CarScalarFieldEnum[]
 }
 
 /**
- * car create
+ * Car create
  */
-export type carCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * The data needed to create a car.
+   * Choose, which related nodes to fetch as well
    */
-  data: Prisma.XOR<Prisma.carCreateInput, Prisma.carUncheckedCreateInput>
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * The data needed to create a Car.
+   */
+  data: Prisma.XOR<Prisma.CarCreateInput, Prisma.CarUncheckedCreateInput>
 }
 
 /**
- * car createMany
+ * Car createMany
  */
-export type carCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many cars.
+   * The data used to create many Cars.
    */
-  data: Prisma.carCreateManyInput | Prisma.carCreateManyInput[]
+  data: Prisma.CarCreateManyInput | Prisma.CarCreateManyInput[]
 }
 
 /**
- * car createManyAndReturn
+ * Car createManyAndReturn
  */
-export type carCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.CarSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * The data used to create many cars.
+   * The data used to create many Cars.
    */
-  data: Prisma.carCreateManyInput | Prisma.carCreateManyInput[]
+  data: Prisma.CarCreateManyInput | Prisma.CarCreateManyInput[]
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * car update
+ * Car update
  */
-export type carUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * The data needed to update a car.
+   * Choose, which related nodes to fetch as well
    */
-  data: Prisma.XOR<Prisma.carUpdateInput, Prisma.carUncheckedUpdateInput>
+  include?: Prisma.CarInclude<ExtArgs> | null
   /**
-   * Choose, which car to update.
+   * The data needed to update a Car.
    */
-  where: Prisma.carWhereUniqueInput
+  data: Prisma.XOR<Prisma.CarUpdateInput, Prisma.CarUncheckedUpdateInput>
+  /**
+   * Choose, which Car to update.
+   */
+  where: Prisma.CarWhereUniqueInput
 }
 
 /**
- * car updateMany
+ * Car updateMany
  */
-export type carUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update cars.
+   * The data used to update Cars.
    */
-  data: Prisma.XOR<Prisma.carUpdateManyMutationInput, Prisma.carUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyInput>
   /**
-   * Filter which cars to update
+   * Filter which Cars to update
    */
-  where?: Prisma.carWhereInput
+  where?: Prisma.CarWhereInput
   /**
-   * Limit how many cars to update.
+   * Limit how many Cars to update.
    */
   limit?: number
 }
 
 /**
- * car updateManyAndReturn
+ * Car updateManyAndReturn
  */
-export type carUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.CarSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * The data used to update cars.
+   * The data used to update Cars.
    */
-  data: Prisma.XOR<Prisma.carUpdateManyMutationInput, Prisma.carUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyInput>
   /**
-   * Filter which cars to update
+   * Filter which Cars to update
    */
-  where?: Prisma.carWhereInput
+  where?: Prisma.CarWhereInput
   /**
-   * Limit how many cars to update.
+   * Limit how many Cars to update.
+   */
+  limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarIncludeUpdateManyAndReturn<ExtArgs> | null
+}
+
+/**
+ * Car upsert
+ */
+export type CarUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Car
+   */
+  select?: Prisma.CarSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Car
+   */
+  omit?: Prisma.CarOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * The filter to search for the Car to update in case it exists.
+   */
+  where: Prisma.CarWhereUniqueInput
+  /**
+   * In case the Car found by the `where` argument doesn't exist, create a new Car with this data.
+   */
+  create: Prisma.XOR<Prisma.CarCreateInput, Prisma.CarUncheckedCreateInput>
+  /**
+   * In case the Car was found with the provided `where` argument, update it with this data.
+   */
+  update: Prisma.XOR<Prisma.CarUpdateInput, Prisma.CarUncheckedUpdateInput>
+}
+
+/**
+ * Car delete
+ */
+export type CarDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Car
+   */
+  select?: Prisma.CarSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Car
+   */
+  omit?: Prisma.CarOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarInclude<ExtArgs> | null
+  /**
+   * Filter which Car to delete.
+   */
+  where: Prisma.CarWhereUniqueInput
+}
+
+/**
+ * Car deleteMany
+ */
+export type CarDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Filter which Cars to delete
+   */
+  where?: Prisma.CarWhereInput
+  /**
+   * Limit how many Cars to delete.
    */
   limit?: number
 }
 
 /**
- * car upsert
+ * Car without action
  */
-export type carUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the car
+   * Select specific fields to fetch from the Car
    */
-  select?: Prisma.carSelect<ExtArgs> | null
+  select?: Prisma.CarSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the car
+   * Omit specific fields from the Car
    */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  omit?: Prisma.CarOmit<ExtArgs> | null
   /**
-   * The filter to search for the car to update in case it exists.
+   * Choose, which related nodes to fetch as well
    */
-  where: Prisma.carWhereUniqueInput
-  /**
-   * In case the car found by the `where` argument doesn't exist, create a new car with this data.
-   */
-  create: Prisma.XOR<Prisma.carCreateInput, Prisma.carUncheckedCreateInput>
-  /**
-   * In case the car was found with the provided `where` argument, update it with this data.
-   */
-  update: Prisma.XOR<Prisma.carUpdateInput, Prisma.carUncheckedUpdateInput>
-}
-
-/**
- * car delete
- */
-export type carDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the car
-   */
-  select?: Prisma.carSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the car
-   */
-  omit?: Prisma.carOmit<ExtArgs> | null
-  /**
-   * Filter which car to delete.
-   */
-  where: Prisma.carWhereUniqueInput
-}
-
-/**
- * car deleteMany
- */
-export type carDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Filter which cars to delete
-   */
-  where?: Prisma.carWhereInput
-  /**
-   * Limit how many cars to delete.
-   */
-  limit?: number
-}
-
-/**
- * car without action
- */
-export type carDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the car
-   */
-  select?: Prisma.carSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the car
-   */
-  omit?: Prisma.carOmit<ExtArgs> | null
+  include?: Prisma.CarInclude<ExtArgs> | null
 }

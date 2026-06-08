@@ -10,7 +10,18 @@ class CarController {
       const data = await prisma.car.findMany({
         select: {
           id: true,
-          brand: true,
+          brand: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+          category: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
           model: true,
           year: true,
           price: true,
@@ -34,8 +45,6 @@ class CarController {
       const data = await prisma.car.findUnique({
         select: {
           id: true,
-          category: true,
-          brand: true,
           model: true,
           year: true,
           fueltype: true,
@@ -54,20 +63,34 @@ class CarController {
   };
 
   createRecord = async (req: Request, res: Response) => {
-    const { category, brand, model, year, fueltype, isActive } = req.body;
+    const { categoryId, model, year, fueltype, isActive, brandId } = req.body;
 
-    if (!brand || !model) {
-      console.error("Brand og model må ikke være tomme");
+    if (!brandId || !model || !categoryId) {
+      return res
+        .status(400)
+        .json({ message: "brandId, categoryId og model må ikke være tomme" });
     }
     try {
       const data = await prisma.car.create({
         data: {
-          category: category,
-          brand: brand,
+          category: {
+            connect: { id: Number(categoryId) },
+          },
           model: model,
           year: Number(year),
           fueltype: fueltype,
-          isActive: Boolean(JSON.parse(isActive)),
+          isActive: isActive === "true",
+          brand: {
+            connect: { id: Number(brandId) },
+          },
+        },
+        include: {
+          brand: {
+            select: { id: true, name: true },
+          },
+          category: {
+            select: { id: true, name: true },
+          },
         },
       });
       return res.status(201).json(data);
@@ -77,13 +100,21 @@ class CarController {
   };
   updateRecord = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
-    const { category, brand, model, year, fueltype, isActive } = req.body;
+    const { categoryId, brandId, model, year, fueltype, isActive } = req.body;
     try {
       const data = await prisma.car.update({
         where: { id },
         data: {
-          category: category,
-          brand: brand,
+          category: {
+            connect: {
+              id: Number(categoryId),
+            },
+          },
+          brand: {
+            connect: {
+              id: Number(brandId),
+            },
+          },
           model: model,
           year: Number(year),
           fueltype: fueltype,

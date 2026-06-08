@@ -52,7 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  car: 'car',
+  Car: 'Car',
   Category: 'Category',
   Brand: 'Brand'
 } as const
@@ -88,8 +88,8 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const CarScalarFieldEnum = {
   id: 'id',
-  category: 'category',
-  brand: 'brand',
+  brandId: 'brandId',
+  categoryId: 'categoryId',
   model: 'model',
   year: 'year',
   price: 'price',

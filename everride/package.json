@@ -11,7 +11,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "migrate": "prisma migrate dev",
-    "reset": "prisma migrate reset dev",
+    "reset": "prisma migrate reset",
     "generate": "prisma generate"
   },
   "devDependencies": {

@@ -385,7 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
-  car: 'car',
+  Car: 'Car',
   Category: 'Category',
   Brand: 'Brand'
 } as const
@@ -481,76 +481,76 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    car: {
-      payload: Prisma.$carPayload<ExtArgs>
-      fields: Prisma.carFieldRefs
+    Car: {
+      payload: Prisma.$CarPayload<ExtArgs>
+      fields: Prisma.CarFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.carFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload> | null
+          args: Prisma.CarFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.carFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>
+          args: Prisma.CarFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         findFirst: {
-          args: Prisma.carFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload> | null
+          args: Prisma.CarFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.carFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>
+          args: Prisma.CarFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         findMany: {
-          args: Prisma.carFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>[]
+          args: Prisma.CarFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>[]
         }
         create: {
-          args: Prisma.carCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>
+          args: Prisma.CarCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         createMany: {
-          args: Prisma.carCreateManyArgs<ExtArgs>
+          args: Prisma.CarCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.carCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>[]
+          args: Prisma.CarCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>[]
         }
         delete: {
-          args: Prisma.carDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>
+          args: Prisma.CarDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         update: {
-          args: Prisma.carUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>
+          args: Prisma.CarUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         deleteMany: {
-          args: Prisma.carDeleteManyArgs<ExtArgs>
+          args: Prisma.CarDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.carUpdateManyArgs<ExtArgs>
+          args: Prisma.CarUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.carUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>[]
+          args: Prisma.CarUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>[]
         }
         upsert: {
-          args: Prisma.carUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$carPayload>
+          args: Prisma.CarUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarPayload>
         }
         aggregate: {
           args: Prisma.CarAggregateArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AggregateCar>
         }
         groupBy: {
-          args: Prisma.carGroupByArgs<ExtArgs>
+          args: Prisma.CarGroupByArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CarGroupByOutputType>[]
         }
         count: {
-          args: Prisma.carCountArgs<ExtArgs>
+          args: Prisma.CarCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CarCountAggregateOutputType> | number
         }
       }
@@ -757,8 +757,8 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const CarScalarFieldEnum = {
   id: 'id',
-  category: 'category',
-  brand: 'brand',
+  brandId: 'brandId',
+  categoryId: 'categoryId',
   model: 'model',
   year: 'year',
   price: 'price',
@@ -947,7 +947,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
-  car?: Prisma.carOmit
+  car?: Prisma.CarOmit
   category?: Prisma.CategoryOmit
   brand?: Prisma.BrandOmit
 }

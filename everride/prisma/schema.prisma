@@ -27,10 +27,10 @@ model User {
   @@map("users") // Navn på tabel
 }
 
-model car {
+model Car {
   id Int @id @default(autoincrement()) // Felt til primær nøgle
-  category String // Felt til tekst
-  brand String // Felt til tekst
+  brandId Int // Fremmednøgle - referer til brand
+  categoryId Int
   model String // Felt til tekst
   year Int // Felt til tekst
   price Float @default(0.00) // Felt til decimaltal
@@ -39,6 +39,11 @@ model car {
   isActive  Boolean @default(false) // Felt til boolean (true/false)
   createAt DateTime @default(now())
 
+// Relation til brand
+  brand Brand @relation(fields: [brandId], references: [id]) 
+  // Relation til category
+  category Category @relation(fields: [categoryId], references: [id])
+
   @@map("car") // Navn på tabel
 }
 
@@ -46,6 +51,8 @@ model Category {
   id Int @id @default(autoincrement()) // Felt til primær nøgle
   name String // Felt til tekst
 
+// Modsat relation
+  cars  Car[]
   @@map("categories") // Navn på tabel
 }
 
@@ -53,6 +60,9 @@ model Brand {
 id Int @id @default(autoincrement()) // Felt til primær nøgle
 name String
 logo String
+
+  // Modsat relation
+  cars  Car[]
 
 @@map("brands") // Navn på tabel
 }
