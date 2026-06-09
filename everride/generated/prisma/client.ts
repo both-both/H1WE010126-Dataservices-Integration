@@ -61,3 +61,13 @@ export type Category = Prisma.CategoryModel
  * 
  */
 export type Brand = Prisma.BrandModel
+/**
+ * Model Feature
+ * 
+ */
+export type Feature = Prisma.FeatureModel
+/**
+ * Model CarFeatureRel
+ * 
+ */
+export type CarFeatureRel = Prisma.CarFeatureRelModel

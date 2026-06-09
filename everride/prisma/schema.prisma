@@ -11,19 +11,20 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
-enum Role{
+
+enum Role {
   USER
   ADMIN
 }
 
 model User {
-  id Int @id @default(autoincrement()) // Felt til primær nøgle
+  id        Int      @id @default(autoincrement()) // Felt til primær nøgle
   firstname String // Felt til tekst
-  lastname String
-  email String @unique // Felt til tekst med unik værdi
-  password String
-  role Role
-  isActive Boolean @default(false) // Felt til boolean (true/false)
+  lastname  String
+  email     String   @unique // Felt til tekst med unik værdi
+  password  String
+  role      Role
+  isActive  Boolean  @default(false) // Felt til boolean (true/false)
   createdAt DateTime @default(now()) // Felt til datotid
   updatedAt DateTime @updatedAt
 
@@ -31,41 +32,68 @@ model User {
 }
 
 model Car {
-  id Int @id @default(autoincrement()) // Felt til primær nøgle
-  brandId Int // Fremmednøgle - referer til brand
+  id         Int      @id @default(autoincrement()) // Felt til primær nøgle
+  title      String // Felt til tekst model
+  year       Int // Felt til tekst
   categoryId Int
-  model String // Felt til tekst
-  year Int // Felt til tekst
-  price Float @default(0.00) // Felt til decimaltal
-  fueltype String
-  hasTowBar Boolean @default(false) // Felt til boolean (true/false)
-  isActive  Boolean @default(false) // Felt til boolean (true/false)
-  createAt DateTime @default(now())
+  brandId    Int // Fremmednøgle - referer til brand
+  featureId  Int // Integer(heltal)
+  price      Decimal // Felt til decimaltal
+  isActive   Boolean  @default(false) // Felt til boolean (true/false)
+  createdAt  DateTime @default(now())
 
-// Relation til brand
-  brand Brand @relation(fields: [brandId], references: [id]) 
   // Relation til category
   category Category @relation(fields: [categoryId], references: [id])
+
+  // Relation til brand én til mange
+  brand Brand @relation(fields: [brandId], references: [id])
+
+  features CarFeatureRel[]
+  feature  Feature         @relation(fields: [featureId], references: [id])
 
   @@map("car") // Navn på tabel
 }
 
-model Category { 
-  id Int @id @default(autoincrement()) // Felt til primær nøgle
+model Category {
+  id   Int    @id @default(autoincrement()) // Felt til primær nøgle
   name String // Felt til tekst
 
-// Modsat relation
-  cars  Car[]
+  // mange til én relation
+  cars Car[]
+
   @@map("categories") // Navn på tabel
 }
 
-model Brand { 
-id Int @id @default(autoincrement()) // Felt til primær nøgle
-name String
-logo String
+model Brand {
+  id      Int     @id @default(autoincrement()) // Felt til primær nøgle
+  name    String
+  logoUrl String?
 
-  // Modsat relation
-  cars  Car[]
+  // mange til relation
+  cars Car[]
 
-@@map("brands") // Navn på tabel
+  @@map("brands") // Navn på tabel
+}
+
+model Feature {
+  id   Int    @id @default(autoincrement()) // Felt til primær nøgle
+  name String
+
+  // mange til relation
+  cars           Car[]
+  carFeatureRels CarFeatureRel[]
+
+  @@map("features") // Navn på tabel
+}
+
+model CarFeatureRel {
+  id        Int @id @default(autoincrement()) // Felt til primær nøgle
+  productId Int
+  featureId Int
+
+  // mange til relation
+  cars    Car     @relation(fields: [productId], references: [id])
+  feature Feature @relation(fields: [featureId], references: [id])
+
+  @@map("car_feature_rel") // Navn på tabel
 }

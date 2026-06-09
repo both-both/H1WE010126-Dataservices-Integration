@@ -28,114 +28,112 @@ export type AggregateCar = {
 
 export type CarAvgAggregateOutputType = {
   id: number | null
-  brandId: number | null
-  categoryId: number | null
   year: number | null
-  price: number | null
+  categoryId: number | null
+  brandId: number | null
+  featureId: number | null
+  price: runtime.Decimal | null
 }
 
 export type CarSumAggregateOutputType = {
   id: number | null
-  brandId: number | null
-  categoryId: number | null
   year: number | null
-  price: number | null
+  categoryId: number | null
+  brandId: number | null
+  featureId: number | null
+  price: runtime.Decimal | null
 }
 
 export type CarMinAggregateOutputType = {
   id: number | null
-  brandId: number | null
-  categoryId: number | null
-  model: string | null
+  title: string | null
   year: number | null
-  price: number | null
-  fueltype: string | null
-  hasTowBar: boolean | null
+  categoryId: number | null
+  brandId: number | null
+  featureId: number | null
+  price: runtime.Decimal | null
   isActive: boolean | null
-  createAt: Date | null
+  createdAt: Date | null
 }
 
 export type CarMaxAggregateOutputType = {
   id: number | null
-  brandId: number | null
-  categoryId: number | null
-  model: string | null
+  title: string | null
   year: number | null
-  price: number | null
-  fueltype: string | null
-  hasTowBar: boolean | null
+  categoryId: number | null
+  brandId: number | null
+  featureId: number | null
+  price: runtime.Decimal | null
   isActive: boolean | null
-  createAt: Date | null
+  createdAt: Date | null
 }
 
 export type CarCountAggregateOutputType = {
   id: number
-  brandId: number
-  categoryId: number
-  model: number
+  title: number
   year: number
+  categoryId: number
+  brandId: number
+  featureId: number
   price: number
-  fueltype: number
-  hasTowBar: number
   isActive: number
-  createAt: number
+  createdAt: number
   _all: number
 }
 
 
 export type CarAvgAggregateInputType = {
   id?: true
-  brandId?: true
-  categoryId?: true
   year?: true
+  categoryId?: true
+  brandId?: true
+  featureId?: true
   price?: true
 }
 
 export type CarSumAggregateInputType = {
   id?: true
-  brandId?: true
-  categoryId?: true
   year?: true
+  categoryId?: true
+  brandId?: true
+  featureId?: true
   price?: true
 }
 
 export type CarMinAggregateInputType = {
   id?: true
-  brandId?: true
-  categoryId?: true
-  model?: true
+  title?: true
   year?: true
+  categoryId?: true
+  brandId?: true
+  featureId?: true
   price?: true
-  fueltype?: true
-  hasTowBar?: true
   isActive?: true
-  createAt?: true
+  createdAt?: true
 }
 
 export type CarMaxAggregateInputType = {
   id?: true
-  brandId?: true
-  categoryId?: true
-  model?: true
+  title?: true
   year?: true
+  categoryId?: true
+  brandId?: true
+  featureId?: true
   price?: true
-  fueltype?: true
-  hasTowBar?: true
   isActive?: true
-  createAt?: true
+  createdAt?: true
 }
 
 export type CarCountAggregateInputType = {
   id?: true
-  brandId?: true
-  categoryId?: true
-  model?: true
+  title?: true
   year?: true
+  categoryId?: true
+  brandId?: true
+  featureId?: true
   price?: true
-  fueltype?: true
-  hasTowBar?: true
   isActive?: true
-  createAt?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -227,15 +225,14 @@ export type CarGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type CarGroupByOutputType = {
   id: number
-  brandId: number
-  categoryId: number
-  model: string
+  title: string
   year: number
-  price: number
-  fueltype: string
-  hasTowBar: boolean
+  categoryId: number
+  brandId: number
+  featureId: number
+  price: runtime.Decimal
   isActive: boolean
-  createAt: Date
+  createdAt: Date
   _count: CarCountAggregateOutputType | null
   _avg: CarAvgAggregateOutputType | null
   _sum: CarSumAggregateOutputType | null
@@ -263,32 +260,34 @@ export type CarWhereInput = {
   OR?: Prisma.CarWhereInput[]
   NOT?: Prisma.CarWhereInput | Prisma.CarWhereInput[]
   id?: Prisma.IntFilter<"Car"> | number
-  brandId?: Prisma.IntFilter<"Car"> | number
-  categoryId?: Prisma.IntFilter<"Car"> | number
-  model?: Prisma.StringFilter<"Car"> | string
+  title?: Prisma.StringFilter<"Car"> | string
   year?: Prisma.IntFilter<"Car"> | number
-  price?: Prisma.FloatFilter<"Car"> | number
-  fueltype?: Prisma.StringFilter<"Car"> | string
-  hasTowBar?: Prisma.BoolFilter<"Car"> | boolean
+  categoryId?: Prisma.IntFilter<"Car"> | number
+  brandId?: Prisma.IntFilter<"Car"> | number
+  featureId?: Prisma.IntFilter<"Car"> | number
+  price?: Prisma.DecimalFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFilter<"Car"> | boolean
-  createAt?: Prisma.DateTimeFilter<"Car"> | Date | string
-  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
+  createdAt?: Prisma.DateTimeFilter<"Car"> | Date | string
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
+  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
+  features?: Prisma.CarFeatureRelListRelationFilter
+  feature?: Prisma.XOR<Prisma.FeatureScalarRelationFilter, Prisma.FeatureWhereInput>
 }
 
 export type CarOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  model?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
-  fueltype?: Prisma.SortOrder
-  hasTowBar?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  createAt?: Prisma.SortOrder
-  brand?: Prisma.BrandOrderByWithRelationInput
+  createdAt?: Prisma.SortOrder
   category?: Prisma.CategoryOrderByWithRelationInput
+  brand?: Prisma.BrandOrderByWithRelationInput
+  features?: Prisma.CarFeatureRelOrderByRelationAggregateInput
+  feature?: Prisma.FeatureOrderByWithRelationInput
 }
 
 export type CarWhereUniqueInput = Prisma.AtLeast<{
@@ -296,30 +295,30 @@ export type CarWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CarWhereInput | Prisma.CarWhereInput[]
   OR?: Prisma.CarWhereInput[]
   NOT?: Prisma.CarWhereInput | Prisma.CarWhereInput[]
-  brandId?: Prisma.IntFilter<"Car"> | number
-  categoryId?: Prisma.IntFilter<"Car"> | number
-  model?: Prisma.StringFilter<"Car"> | string
+  title?: Prisma.StringFilter<"Car"> | string
   year?: Prisma.IntFilter<"Car"> | number
-  price?: Prisma.FloatFilter<"Car"> | number
-  fueltype?: Prisma.StringFilter<"Car"> | string
-  hasTowBar?: Prisma.BoolFilter<"Car"> | boolean
+  categoryId?: Prisma.IntFilter<"Car"> | number
+  brandId?: Prisma.IntFilter<"Car"> | number
+  featureId?: Prisma.IntFilter<"Car"> | number
+  price?: Prisma.DecimalFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFilter<"Car"> | boolean
-  createAt?: Prisma.DateTimeFilter<"Car"> | Date | string
-  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
+  createdAt?: Prisma.DateTimeFilter<"Car"> | Date | string
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
+  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
+  features?: Prisma.CarFeatureRelListRelationFilter
+  feature?: Prisma.XOR<Prisma.FeatureScalarRelationFilter, Prisma.FeatureWhereInput>
 }, "id">
 
 export type CarOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  model?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
-  fueltype?: Prisma.SortOrder
-  hasTowBar?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  createAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.CarCountOrderByAggregateInput
   _avg?: Prisma.CarAvgOrderByAggregateInput
   _max?: Prisma.CarMaxOrderByAggregateInput
@@ -332,155 +331,149 @@ export type CarScalarWhereWithAggregatesInput = {
   OR?: Prisma.CarScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CarScalarWhereWithAggregatesInput | Prisma.CarScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Car"> | number
-  brandId?: Prisma.IntWithAggregatesFilter<"Car"> | number
-  categoryId?: Prisma.IntWithAggregatesFilter<"Car"> | number
-  model?: Prisma.StringWithAggregatesFilter<"Car"> | string
+  title?: Prisma.StringWithAggregatesFilter<"Car"> | string
   year?: Prisma.IntWithAggregatesFilter<"Car"> | number
-  price?: Prisma.FloatWithAggregatesFilter<"Car"> | number
-  fueltype?: Prisma.StringWithAggregatesFilter<"Car"> | string
-  hasTowBar?: Prisma.BoolWithAggregatesFilter<"Car"> | boolean
+  categoryId?: Prisma.IntWithAggregatesFilter<"Car"> | number
+  brandId?: Prisma.IntWithAggregatesFilter<"Car"> | number
+  featureId?: Prisma.IntWithAggregatesFilter<"Car"> | number
+  price?: Prisma.DecimalWithAggregatesFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolWithAggregatesFilter<"Car"> | boolean
-  createAt?: Prisma.DateTimeWithAggregatesFilter<"Car"> | Date | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Car"> | Date | string
 }
 
 export type CarCreateInput = {
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
-  brand: Prisma.BrandCreateNestedOneWithoutCarsInput
+  createdAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutCarsInput
+  brand: Prisma.BrandCreateNestedOneWithoutCarsInput
+  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
 }
 
 export type CarUncheckedCreateInput = {
   id?: number
-  brandId: number
-  categoryId: number
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  categoryId: number
+  brandId: number
+  featureId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
+  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
 }
 
 export type CarUpdateInput = {
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
+  brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
+  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
 }
 
 export type CarCreateManyInput = {
   id?: number
-  brandId: number
-  categoryId: number
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  categoryId: number
+  brandId: number
+  featureId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
 }
 
 export type CarUpdateManyMutationInput = {
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CarUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CarCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  model?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
-  fueltype?: Prisma.SortOrder
-  hasTowBar?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  createAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type CarAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
 }
 
 export type CarMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  model?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
-  fueltype?: Prisma.SortOrder
-  hasTowBar?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  createAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type CarMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  model?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
-  fueltype?: Prisma.SortOrder
-  hasTowBar?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  createAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type CarSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  brandId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
 }
 
@@ -494,12 +487,17 @@ export type CarOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type CarScalarRelationFilter = {
+  is?: Prisma.CarWhereInput
+  isNot?: Prisma.CarWhereInput
+}
+
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CarCreateNestedManyWithoutCategoryInput = {
@@ -586,27 +584,83 @@ export type CarUncheckedUpdateManyWithoutBrandNestedInput = {
   deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
 }
 
+export type CarCreateNestedManyWithoutFeatureInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeatureInput, Prisma.CarUncheckedCreateWithoutFeatureInput> | Prisma.CarCreateWithoutFeatureInput[] | Prisma.CarUncheckedCreateWithoutFeatureInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeatureInput | Prisma.CarCreateOrConnectWithoutFeatureInput[]
+  createMany?: Prisma.CarCreateManyFeatureInputEnvelope
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+}
+
+export type CarUncheckedCreateNestedManyWithoutFeatureInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeatureInput, Prisma.CarUncheckedCreateWithoutFeatureInput> | Prisma.CarCreateWithoutFeatureInput[] | Prisma.CarUncheckedCreateWithoutFeatureInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeatureInput | Prisma.CarCreateOrConnectWithoutFeatureInput[]
+  createMany?: Prisma.CarCreateManyFeatureInputEnvelope
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+}
+
+export type CarUpdateManyWithoutFeatureNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeatureInput, Prisma.CarUncheckedCreateWithoutFeatureInput> | Prisma.CarCreateWithoutFeatureInput[] | Prisma.CarUncheckedCreateWithoutFeatureInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeatureInput | Prisma.CarCreateOrConnectWithoutFeatureInput[]
+  upsert?: Prisma.CarUpsertWithWhereUniqueWithoutFeatureInput | Prisma.CarUpsertWithWhereUniqueWithoutFeatureInput[]
+  createMany?: Prisma.CarCreateManyFeatureInputEnvelope
+  set?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  disconnect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  delete?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  update?: Prisma.CarUpdateWithWhereUniqueWithoutFeatureInput | Prisma.CarUpdateWithWhereUniqueWithoutFeatureInput[]
+  updateMany?: Prisma.CarUpdateManyWithWhereWithoutFeatureInput | Prisma.CarUpdateManyWithWhereWithoutFeatureInput[]
+  deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+}
+
+export type CarUncheckedUpdateManyWithoutFeatureNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeatureInput, Prisma.CarUncheckedCreateWithoutFeatureInput> | Prisma.CarCreateWithoutFeatureInput[] | Prisma.CarUncheckedCreateWithoutFeatureInput[]
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeatureInput | Prisma.CarCreateOrConnectWithoutFeatureInput[]
+  upsert?: Prisma.CarUpsertWithWhereUniqueWithoutFeatureInput | Prisma.CarUpsertWithWhereUniqueWithoutFeatureInput[]
+  createMany?: Prisma.CarCreateManyFeatureInputEnvelope
+  set?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  disconnect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  delete?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  connect?: Prisma.CarWhereUniqueInput | Prisma.CarWhereUniqueInput[]
+  update?: Prisma.CarUpdateWithWhereUniqueWithoutFeatureInput | Prisma.CarUpdateWithWhereUniqueWithoutFeatureInput[]
+  updateMany?: Prisma.CarUpdateManyWithWhereWithoutFeatureInput | Prisma.CarUpdateManyWithWhereWithoutFeatureInput[]
+  deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
+}
+
+export type CarCreateNestedOneWithoutFeaturesInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeaturesInput
+  connect?: Prisma.CarWhereUniqueInput
+}
+
+export type CarUpdateOneRequiredWithoutFeaturesNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeaturesInput
+  upsert?: Prisma.CarUpsertWithoutFeaturesInput
+  connect?: Prisma.CarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutFeaturesInput, Prisma.CarUpdateWithoutFeaturesInput>, Prisma.CarUncheckedUpdateWithoutFeaturesInput>
+}
+
 export type CarCreateWithoutCategoryInput = {
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutCarsInput
+  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
 }
 
 export type CarUncheckedCreateWithoutCategoryInput = {
   id?: number
-  brandId: number
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  brandId: number
+  featureId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
+  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
 }
 
 export type CarCreateOrConnectWithoutCategoryInput = {
@@ -639,38 +693,37 @@ export type CarScalarWhereInput = {
   OR?: Prisma.CarScalarWhereInput[]
   NOT?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
   id?: Prisma.IntFilter<"Car"> | number
-  brandId?: Prisma.IntFilter<"Car"> | number
-  categoryId?: Prisma.IntFilter<"Car"> | number
-  model?: Prisma.StringFilter<"Car"> | string
+  title?: Prisma.StringFilter<"Car"> | string
   year?: Prisma.IntFilter<"Car"> | number
-  price?: Prisma.FloatFilter<"Car"> | number
-  fueltype?: Prisma.StringFilter<"Car"> | string
-  hasTowBar?: Prisma.BoolFilter<"Car"> | boolean
+  categoryId?: Prisma.IntFilter<"Car"> | number
+  brandId?: Prisma.IntFilter<"Car"> | number
+  featureId?: Prisma.IntFilter<"Car"> | number
+  price?: Prisma.DecimalFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFilter<"Car"> | boolean
-  createAt?: Prisma.DateTimeFilter<"Car"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Car"> | Date | string
 }
 
 export type CarCreateWithoutBrandInput = {
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutCarsInput
+  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
 }
 
 export type CarUncheckedCreateWithoutBrandInput = {
   id?: number
-  categoryId: number
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  categoryId: number
+  featureId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
+  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
 }
 
 export type CarCreateOrConnectWithoutBrandInput = {
@@ -698,191 +751,378 @@ export type CarUpdateManyWithWhereWithoutBrandInput = {
   data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyWithoutBrandInput>
 }
 
+export type CarCreateWithoutFeatureInput = {
+  title: string
+  year: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
+  createdAt?: Date | string
+  category: Prisma.CategoryCreateNestedOneWithoutCarsInput
+  brand: Prisma.BrandCreateNestedOneWithoutCarsInput
+  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+}
+
+export type CarUncheckedCreateWithoutFeatureInput = {
+  id?: number
+  title: string
+  year: number
+  categoryId: number
+  brandId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
+  createdAt?: Date | string
+  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
+}
+
+export type CarCreateOrConnectWithoutFeatureInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutFeatureInput, Prisma.CarUncheckedCreateWithoutFeatureInput>
+}
+
+export type CarCreateManyFeatureInputEnvelope = {
+  data: Prisma.CarCreateManyFeatureInput | Prisma.CarCreateManyFeatureInput[]
+}
+
+export type CarUpsertWithWhereUniqueWithoutFeatureInput = {
+  where: Prisma.CarWhereUniqueInput
+  update: Prisma.XOR<Prisma.CarUpdateWithoutFeatureInput, Prisma.CarUncheckedUpdateWithoutFeatureInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutFeatureInput, Prisma.CarUncheckedCreateWithoutFeatureInput>
+}
+
+export type CarUpdateWithWhereUniqueWithoutFeatureInput = {
+  where: Prisma.CarWhereUniqueInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutFeatureInput, Prisma.CarUncheckedUpdateWithoutFeatureInput>
+}
+
+export type CarUpdateManyWithWhereWithoutFeatureInput = {
+  where: Prisma.CarScalarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyWithoutFeatureInput>
+}
+
+export type CarCreateWithoutFeaturesInput = {
+  title: string
+  year: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
+  createdAt?: Date | string
+  category: Prisma.CategoryCreateNestedOneWithoutCarsInput
+  brand: Prisma.BrandCreateNestedOneWithoutCarsInput
+  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
+}
+
+export type CarUncheckedCreateWithoutFeaturesInput = {
+  id?: number
+  title: string
+  year: number
+  categoryId: number
+  brandId: number
+  featureId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
+  createdAt?: Date | string
+}
+
+export type CarCreateOrConnectWithoutFeaturesInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
+}
+
+export type CarUpsertWithoutFeaturesInput = {
+  update: Prisma.XOR<Prisma.CarUpdateWithoutFeaturesInput, Prisma.CarUncheckedUpdateWithoutFeaturesInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
+  where?: Prisma.CarWhereInput
+}
+
+export type CarUpdateToOneWithWhereWithoutFeaturesInput = {
+  where?: Prisma.CarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutFeaturesInput, Prisma.CarUncheckedUpdateWithoutFeaturesInput>
+}
+
+export type CarUpdateWithoutFeaturesInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
+  brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
+}
+
+export type CarUncheckedUpdateWithoutFeaturesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type CarCreateManyCategoryInput = {
   id?: number
-  brandId: number
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  brandId: number
+  featureId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
 }
 
 export type CarUpdateWithoutCategoryInput = {
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
+  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CarCreateManyBrandInput = {
   id?: number
-  categoryId: number
-  model: string
+  title: string
   year: number
-  price?: number
-  fueltype: string
-  hasTowBar?: boolean
+  categoryId: number
+  featureId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
-  createAt?: Date | string
+  createdAt?: Date | string
 }
 
 export type CarUpdateWithoutBrandInput = {
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
+  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateWithoutBrandInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutBrandInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  model?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
-  fueltype?: Prisma.StringFieldUpdateOperationsInput | string
-  hasTowBar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type CarCreateManyFeatureInput = {
+  id?: number
+  title: string
+  year: number
+  categoryId: number
+  brandId: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
+  createdAt?: Date | string
+}
+
+export type CarUpdateWithoutFeatureInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
+  brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
+  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+}
+
+export type CarUncheckedUpdateWithoutFeatureInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
+}
+
+export type CarUncheckedUpdateManyWithoutFeatureInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  year?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  brandId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type CarCountOutputType
+ */
+
+export type CarCountOutputType = {
+  features: number
+}
+
+export type CarCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  features?: boolean | CarCountOutputTypeCountFeaturesArgs
+}
+
+/**
+ * CarCountOutputType without action
+ */
+export type CarCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CarCountOutputType
+   */
+  select?: Prisma.CarCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * CarCountOutputType without action
+ */
+export type CarCountOutputTypeCountFeaturesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarFeatureRelWhereInput
+}
 
 
 export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  brandId?: boolean
-  categoryId?: boolean
-  model?: boolean
+  title?: boolean
   year?: boolean
+  categoryId?: boolean
+  brandId?: boolean
+  featureId?: boolean
   price?: boolean
-  fueltype?: boolean
-  hasTowBar?: boolean
   isActive?: boolean
-  createAt?: boolean
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  createdAt?: boolean
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  features?: boolean | Prisma.Car$featuresArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
 export type CarSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  brandId?: boolean
-  categoryId?: boolean
-  model?: boolean
+  title?: boolean
   year?: boolean
+  categoryId?: boolean
+  brandId?: boolean
+  featureId?: boolean
   price?: boolean
-  fueltype?: boolean
-  hasTowBar?: boolean
   isActive?: boolean
-  createAt?: boolean
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  createdAt?: boolean
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
 export type CarSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  brandId?: boolean
-  categoryId?: boolean
-  model?: boolean
+  title?: boolean
   year?: boolean
+  categoryId?: boolean
+  brandId?: boolean
+  featureId?: boolean
   price?: boolean
-  fueltype?: boolean
-  hasTowBar?: boolean
   isActive?: boolean
-  createAt?: boolean
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  createdAt?: boolean
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
 export type CarSelectScalar = {
   id?: boolean
-  brandId?: boolean
-  categoryId?: boolean
-  model?: boolean
+  title?: boolean
   year?: boolean
+  categoryId?: boolean
+  brandId?: boolean
+  featureId?: boolean
   price?: boolean
-  fueltype?: boolean
-  hasTowBar?: boolean
   isActive?: boolean
-  createAt?: boolean
+  createdAt?: boolean
 }
 
-export type CarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "brandId" | "categoryId" | "model" | "year" | "price" | "fueltype" | "hasTowBar" | "isActive" | "createAt", ExtArgs["result"]["car"]>
+export type CarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "year" | "categoryId" | "brandId" | "featureId" | "price" | "isActive" | "createdAt", ExtArgs["result"]["car"]>
 export type CarInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  features?: boolean | Prisma.Car$featuresArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CarIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
 }
 export type CarIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
 }
 
 export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Car"
   objects: {
-    brand: Prisma.$BrandPayload<ExtArgs>
     category: Prisma.$CategoryPayload<ExtArgs>
+    brand: Prisma.$BrandPayload<ExtArgs>
+    features: Prisma.$CarFeatureRelPayload<ExtArgs>[]
+    feature: Prisma.$FeaturePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    brandId: number
-    categoryId: number
-    model: string
+    title: string
     year: number
-    price: number
-    fueltype: string
-    hasTowBar: boolean
+    categoryId: number
+    brandId: number
+    featureId: number
+    price: runtime.Decimal
     isActive: boolean
-    createAt: Date
+    createdAt: Date
   }, ExtArgs["result"]["car"]>
   composites: {}
 }
@@ -1277,8 +1517,10 @@ readonly fields: CarFieldRefs;
  */
 export interface Prisma__CarClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   category<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  features<T extends Prisma.Car$featuresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$featuresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarFeatureRelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  feature<T extends Prisma.FeatureDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FeatureDefaultArgs<ExtArgs>>): Prisma.Prisma__FeatureClient<runtime.Types.Result.GetResult<Prisma.$FeaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1309,15 +1551,14 @@ export interface Prisma__CarClient<T, Null = never, ExtArgs extends runtime.Type
  */
 export interface CarFieldRefs {
   readonly id: Prisma.FieldRef<"Car", 'Int'>
-  readonly brandId: Prisma.FieldRef<"Car", 'Int'>
-  readonly categoryId: Prisma.FieldRef<"Car", 'Int'>
-  readonly model: Prisma.FieldRef<"Car", 'String'>
+  readonly title: Prisma.FieldRef<"Car", 'String'>
   readonly year: Prisma.FieldRef<"Car", 'Int'>
-  readonly price: Prisma.FieldRef<"Car", 'Float'>
-  readonly fueltype: Prisma.FieldRef<"Car", 'String'>
-  readonly hasTowBar: Prisma.FieldRef<"Car", 'Boolean'>
+  readonly categoryId: Prisma.FieldRef<"Car", 'Int'>
+  readonly brandId: Prisma.FieldRef<"Car", 'Int'>
+  readonly featureId: Prisma.FieldRef<"Car", 'Int'>
+  readonly price: Prisma.FieldRef<"Car", 'Decimal'>
   readonly isActive: Prisma.FieldRef<"Car", 'Boolean'>
-  readonly createAt: Prisma.FieldRef<"Car", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"Car", 'DateTime'>
 }
     
 
@@ -1714,6 +1955,30 @@ export type CarDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Limit how many Cars to delete.
    */
   limit?: number
+}
+
+/**
+ * Car.features
+ */
+export type Car$featuresArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CarFeatureRel
+   */
+  select?: Prisma.CarFeatureRelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CarFeatureRel
+   */
+  omit?: Prisma.CarFeatureRelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarFeatureRelInclude<ExtArgs> | null
+  where?: Prisma.CarFeatureRelWhereInput
+  orderBy?: Prisma.CarFeatureRelOrderByWithRelationInput | Prisma.CarFeatureRelOrderByWithRelationInput[]
+  cursor?: Prisma.CarFeatureRelWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CarFeatureRelScalarFieldEnum | Prisma.CarFeatureRelScalarFieldEnum[]
 }
 
 /**

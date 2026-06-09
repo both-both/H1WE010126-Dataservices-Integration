@@ -387,7 +387,9 @@ export const ModelName = {
   User: 'User',
   Car: 'Car',
   Category: 'Category',
-  Brand: 'Brand'
+  Brand: 'Brand',
+  Feature: 'Feature',
+  CarFeatureRel: 'CarFeatureRel'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "car" | "category" | "brand"
+    modelProps: "user" | "car" | "category" | "brand" | "feature" | "carFeatureRel"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +705,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Feature: {
+      payload: Prisma.$FeaturePayload<ExtArgs>
+      fields: Prisma.FeatureFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FeatureFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FeatureFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>
+        }
+        findFirst: {
+          args: Prisma.FeatureFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FeatureFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>
+        }
+        findMany: {
+          args: Prisma.FeatureFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>[]
+        }
+        create: {
+          args: Prisma.FeatureCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>
+        }
+        createMany: {
+          args: Prisma.FeatureCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FeatureCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>[]
+        }
+        delete: {
+          args: Prisma.FeatureDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>
+        }
+        update: {
+          args: Prisma.FeatureUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>
+        }
+        deleteMany: {
+          args: Prisma.FeatureDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FeatureUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FeatureUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>[]
+        }
+        upsert: {
+          args: Prisma.FeatureUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FeaturePayload>
+        }
+        aggregate: {
+          args: Prisma.FeatureAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFeature>
+        }
+        groupBy: {
+          args: Prisma.FeatureGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FeatureGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FeatureCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FeatureCountAggregateOutputType> | number
+        }
+      }
+    }
+    CarFeatureRel: {
+      payload: Prisma.$CarFeatureRelPayload<ExtArgs>
+      fields: Prisma.CarFeatureRelFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CarFeatureRelFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CarFeatureRelFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>
+        }
+        findFirst: {
+          args: Prisma.CarFeatureRelFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CarFeatureRelFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>
+        }
+        findMany: {
+          args: Prisma.CarFeatureRelFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>[]
+        }
+        create: {
+          args: Prisma.CarFeatureRelCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>
+        }
+        createMany: {
+          args: Prisma.CarFeatureRelCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CarFeatureRelCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>[]
+        }
+        delete: {
+          args: Prisma.CarFeatureRelDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>
+        }
+        update: {
+          args: Prisma.CarFeatureRelUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>
+        }
+        deleteMany: {
+          args: Prisma.CarFeatureRelDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CarFeatureRelUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CarFeatureRelUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>[]
+        }
+        upsert: {
+          args: Prisma.CarFeatureRelUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarFeatureRelPayload>
+        }
+        aggregate: {
+          args: Prisma.CarFeatureRelAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCarFeatureRel>
+        }
+        groupBy: {
+          args: Prisma.CarFeatureRelGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarFeatureRelGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CarFeatureRelCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarFeatureRelCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -756,15 +906,14 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const CarScalarFieldEnum = {
   id: 'id',
-  brandId: 'brandId',
-  categoryId: 'categoryId',
-  model: 'model',
+  title: 'title',
   year: 'year',
+  categoryId: 'categoryId',
+  brandId: 'brandId',
+  featureId: 'featureId',
   price: 'price',
-  fueltype: 'fueltype',
-  hasTowBar: 'hasTowBar',
   isActive: 'isActive',
-  createAt: 'createAt'
+  createdAt: 'createdAt'
 } as const
 
 export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
@@ -781,10 +930,27 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 export const BrandScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  logo: 'logo'
+  logoUrl: 'logoUrl'
 } as const
 
 export type BrandScalarFieldEnum = (typeof BrandScalarFieldEnum)[keyof typeof BrandScalarFieldEnum]
+
+
+export const FeatureScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type FeatureScalarFieldEnum = (typeof FeatureScalarFieldEnum)[keyof typeof FeatureScalarFieldEnum]
+
+
+export const CarFeatureRelScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  featureId: 'featureId'
+} as const
+
+export type CarFeatureRelScalarFieldEnum = (typeof CarFeatureRelScalarFieldEnum)[keyof typeof CarFeatureRelScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -793,6 +959,14 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -833,6 +1007,13 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
     
 
 
@@ -956,6 +1137,8 @@ export type GlobalOmitConfig = {
   car?: Prisma.CarOmit
   category?: Prisma.CategoryOmit
   brand?: Prisma.BrandOmit
+  feature?: Prisma.FeatureOmit
+  carFeatureRel?: Prisma.CarFeatureRelOmit
 }
 
 /* Types for Logging */

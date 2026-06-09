@@ -54,7 +54,9 @@ export const ModelName = {
   User: 'User',
   Car: 'Car',
   Category: 'Category',
-  Brand: 'Brand'
+  Brand: 'Brand',
+  Feature: 'Feature',
+  CarFeatureRel: 'CarFeatureRel'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -87,15 +89,14 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const CarScalarFieldEnum = {
   id: 'id',
-  brandId: 'brandId',
-  categoryId: 'categoryId',
-  model: 'model',
+  title: 'title',
   year: 'year',
+  categoryId: 'categoryId',
+  brandId: 'brandId',
+  featureId: 'featureId',
   price: 'price',
-  fueltype: 'fueltype',
-  hasTowBar: 'hasTowBar',
   isActive: 'isActive',
-  createAt: 'createAt'
+  createdAt: 'createdAt'
 } as const
 
 export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
@@ -112,10 +113,27 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 export const BrandScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  logo: 'logo'
+  logoUrl: 'logoUrl'
 } as const
 
 export type BrandScalarFieldEnum = (typeof BrandScalarFieldEnum)[keyof typeof BrandScalarFieldEnum]
+
+
+export const FeatureScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type FeatureScalarFieldEnum = (typeof FeatureScalarFieldEnum)[keyof typeof FeatureScalarFieldEnum]
+
+
+export const CarFeatureRelScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  featureId: 'featureId'
+} as const
+
+export type CarFeatureRelScalarFieldEnum = (typeof CarFeatureRelScalarFieldEnum)[keyof typeof CarFeatureRelScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -124,4 +142,12 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
