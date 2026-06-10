@@ -3,9 +3,7 @@ import type { Request, Response } from "express";
 import { carRoutes } from "./routes/carRoutes.js";
 import { brandRoutes } from "./routes/brandRoutes.js";
 import { userRoutes } from "./routes/userRoutes.js";
-import { departmentRoutes } from "./routes/departmentRoutes.js";
-import { aboutRoutes } from "./routes/aboutRoutes.js";
-import { contactRoutes } from "./routes/contactRoutes.js";
+import { authRoutes } from "./routes/authRoutes.js";
 import dotenv from "dotenv";
 import { categoryRoutes } from "./routes/categoryRoutes.js";
 dotenv.config();
@@ -22,13 +20,12 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Forsiden");
 });
 // Tilføjer routes til applikationen
+// anvender opdelte routes
 app.use("/cars", carRoutes);
 app.use("/brands", brandRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/users", userRoutes);
-/* app.use("/afdeling", departmentRoutes);
-app.use("/om-os", aboutRoutes);
-app.use("/kontakt", contactRoutes); */
+app.use("/login", authRoutes);
 
 // 404 Error handling
 app.use((req: Request, res: Response) => {

@@ -9,6 +9,3 @@ const adapter = new PrismaBetterSqlite3({
 export const prisma = new PrismaClient({
   adapter,
 });
-
-const app = express();
-app.use(express.json());
