@@ -1,19 +1,71 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prisma } from "../prisma.js";
 
+// Interface til JWT token data
+interface JwtPayload {
+  exp: number;
+  data: {
+    id: number;
+  };
+}
+// Request interface skal udvides med vores user objekt - placeres ovenover authController class deklarationen
+declare global {
+  namespace Express {
+    interface Request {
+      user?: { id: number };
+    }
+  }
+}
+
+// Middleware til authorization
+
 class AuthController {
+  // Middleware til authorization
+  authorize = async (req: Request, res: Response, next: NextFunction) => {
+    // Henter authorization header
+    const bearerHeader = req.headers["authorization"];
+
+    //tjekekr og token starter med Bearer
+    if (!bearerHeader?.startsWith("Bearer ")) {
+      return res.status(401).json({
+        message: "Token not accepted",
+      });
+    }
+
+    const token = bearerHeader.split(" ")[1];
+    try {
+      const decoded = jwt.verify(
+        token,
+        process.env.TOKEN_ACCESS_KEY!,
+      ) as JwtPayload;
+
+      // Gemmer brugerdata i request
+      req.user = decoded.data;
+
+      // Går videre til næste middleware
+      return next();
+    } catch (error: any) {
+      return res.status(403).json({
+        message: error.message,
+      });
+    }
+  };
+
   // Method generateToken
   generateToken = (
     user: { id: number },
     type: "access" | "refresh", // Definerer om det er en access eller refresh token
   ) => {
+    console.log(type);
+
     //Henter secret key fra .env
     const key = process.env[`TOKEN_${type.toUpperCase()}_KEY`];
 
     // Henter udløbstid fra .env
-    const expiresIn = process.env[`TOKEN_${type.toUpperCase()}EXPIRATION_SECS`];
+    const expiresIn =
+      process.env[`TOKEN_${type.toUpperCase()}_EXPIRATION_SECS`];
 
     // Tjekker om værdier findes
     if (!key || !expiresIn) {
