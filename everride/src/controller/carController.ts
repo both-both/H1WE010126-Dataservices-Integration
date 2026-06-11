@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { prisma } from "../prisma.js";
+import { connect } from "node:http2";
 
 // Defination af klasse
 class CarController {
@@ -22,10 +23,10 @@ class CarController {
               name: true,
             },
           },
-          model: true,
+          title: true,
           year: true,
           price: true,
-          fueltype: true,
+          featureId: true,
           isActive: true,
         },
         orderBy: {
@@ -36,6 +37,7 @@ class CarController {
       return res.json(data);
     } catch (error) {
       console.error(`Fejl i API kald: ${error}`);
+      return res.status(500).json({ message: "Serverfejl" });
     }
   };
 
@@ -45,11 +47,11 @@ class CarController {
       const data = await prisma.car.findUnique({
         select: {
           id: true,
-          model: true,
+          title: true,
           year: true,
-          fueltype: true,
+          featureId: true,
           isActive: true,
-          createAt: true,
+          createdAt: true,
         },
         // where clause - Leder efter noget hvor en betingelse er opfyldt
         where: {
@@ -63,12 +65,13 @@ class CarController {
   };
 
   createRecord = async (req: Request, res: Response) => {
-    const { categoryId, model, year, fueltype, isActive, brandId } = req.body;
+    const { categoryId, title, year, featureId, price, isActive, brandId } =
+      req.body;
 
-    if (!brandId || !model || !categoryId) {
+    if (!brandId || !title || !categoryId) {
       return res
         .status(400)
-        .json({ message: "brandId, categoryId og model må ikke være tomme" });
+        .json({ message: "brandId, categoryId og title må ikke være tomme" });
     }
     try {
       const data = await prisma.car.create({
@@ -76,9 +79,14 @@ class CarController {
           category: {
             connect: { id: Number(categoryId) },
           },
-          model: model,
+          title: title,
           year: Number(year),
-          fueltype: fueltype,
+          feature: {
+            connect: {
+              id: Number(featureId),
+            },
+          },
+          price: Number(price),
           isActive: Boolean(JSON.parse(isActive)),
           brand: {
             connect: { id: Number(brandId) },
@@ -100,24 +108,22 @@ class CarController {
   };
   updateRecord = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
-    const { categoryId, brandId, model, year, fueltype, isActive } = req.body;
+    const { categoryId, brandId, title, year, featureId, isActive } = req.body;
     try {
       const data = await prisma.car.update({
         where: { id },
         data: {
           category: {
-            connect: {
-              id: Number(categoryId),
-            },
+            connect: { id: Number(categoryId) },
           },
           brand: {
-            connect: {
-              id: Number(brandId),
-            },
+            connect: { id: Number(brandId) },
           },
-          model: model,
+          feature: {
+            connect: { id: Number(featureId) },
+          },
+          title: title,
           year: Number(year),
-          fueltype: fueltype,
           isActive: Boolean(isActive),
         },
       });
