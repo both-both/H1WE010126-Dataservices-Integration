@@ -37,7 +37,6 @@ model Car {
   year       Int // Felt til tekst
   categoryId Int
   brandId    Int // Fremmednøgle - referer til brand
-  featureId  Int // Integer(heltal)
   price      Decimal // Felt til decimaltal
   isActive   Boolean  @default(false) // Felt til boolean (true/false)
   createdAt  DateTime @default(now())
@@ -48,8 +47,9 @@ model Car {
   // Relation til brand én til mange
   brand Brand @relation(fields: [brandId], references: [id])
 
-  features CarFeatureRel[]
-  feature  Feature         @relation(fields: [featureId], references: [id])
+  features  CarFeatureRel[]
+  feature   Feature?        @relation(fields: [featureId], references: [id])
+  featureId Int?
 
   @@map("car") // Navn på tabel
 }

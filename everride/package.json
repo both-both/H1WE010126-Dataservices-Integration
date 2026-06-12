@@ -12,7 +12,8 @@
     "start": "node dist/index.js",
     "migrate": "prisma migrate dev",
     "reset": "prisma migrate reset",
-    "generate": "prisma generate"
+    "generate": "prisma generate",
+    "seed": "prisma db seed"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
