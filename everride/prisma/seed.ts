@@ -96,115 +96,99 @@ const main = async () => {
   console.log("Seed completed for feature:", benzin, diesel, hybrid, el);
 
   // Opretter biler i databasen
-  const car1 = await prisma.car.create({
-    data: {
-      title: "Land Cruiser",
-      year: randomYear(2014, 2025),
-      brandId: Number(toyota.id),
-      categoryId: Number(SUV.id),
-      featureId: Number(diesel.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car2 = await prisma.car.create({
-    data: {
-      title: "Amazon",
-      year: randomYear(2014, 2025),
-      brandId: Number(volvo.id),
-      categoryId: Number(andre.id),
-      featureId: Number(benzin.id),
-      price: randomPrice(100000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car3 = await prisma.car.create({
-    data: {
-      title: "RS e-tron GT",
-      year: randomYear(2014, 2025),
-      brandId: Number(audi.id),
-      categoryId: Number(SUV.id),
-      featureId: Number(el.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car4 = await prisma.car.create({
-    data: {
-      title: "ID Buzz GTX",
-      year: randomYear(2014, 2025),
-      brandId: Number(volkswagen.id),
-      categoryId: Number(varevogn.id),
-      featureId: Number(el.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car5 = await prisma.car.create({
-    data: {
-      title: "EX40",
-      year: randomYear(2014, 2025),
-      brandId: Number(volvo.id),
-      categoryId: Number(SUV.id),
-      featureId: Number(el.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car6 = await prisma.car.create({
-    data: {
-      title: "Caddu Maxi",
-      year: randomYear(2014, 2025),
-      brandId: Number(volkswagen.id),
-      categoryId: Number(varevogn.id),
-      featureId: Number(diesel.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car7 = await prisma.car.create({
-    data: {
-      title: "A4",
-      year: randomYear(2014, 2025),
-      brandId: Number(audi.id),
-      categoryId: Number(personbil.id),
-      featureId: Number(benzin.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car8 = await prisma.car.create({
-    data: {
-      title: "Ioniq 5",
-      year: randomYear(2014, 2025),
-      brandId: Number(hyundai.id),
-      categoryId: Number(SUV.id),
-      featureId: Number(el.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car9 = await prisma.car.create({
-    data: {
-      title: "Kona",
-      year: randomYear(2014, 2025),
-      brandId: Number(hyundai.id),
-      categoryId: Number(SUV.id),
-      featureId: Number(el.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
-  });
-  const car10 = await prisma.car.create({
-    data: {
-      title: "Auris",
-      year: randomYear(2014, 2025),
-      brandId: Number(toyota.id),
-      categoryId: Number(bybil.id),
-      featureId: Number(hybrid.id),
-      price: randomPrice(80000, 560000),
-      createdAt: new Date(),
-    },
+  const car1 = await prisma.car.createMany({
+    data: [
+      {
+        title: "Land Cruiser",
+        year: randomYear(2014, 2025),
+        brandId: 1,
+        categoryId: 1,
+        featureId: 1,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "Amazon",
+        year: randomYear(2014, 2025),
+        brandId: 2,
+        categoryId: 2,
+        featureId: 3,
+        price: randomPrice(100000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "RS e-tron GT",
+        year: randomYear(2014, 2025),
+        brandId: 4,
+        categoryId: 2,
+        featureId: 3,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "ID Buzz GTX",
+        year: randomYear(2014, 2025),
+        brandId: 2,
+        categoryId: 4,
+        featureId: 1,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "EX40",
+        year: randomYear(2014, 2025),
+        brandId: 3,
+        categoryId: 5,
+        featureId: 1,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "Caddu Maxi",
+        year: randomYear(2014, 2025),
+        brandId: 2,
+        categoryId: 4,
+        featureId: 2,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "A4",
+        year: randomYear(2014, 2025),
+        brandId: 3,
+        categoryId: 1,
+        featureId: 1,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "Ioniq 5",
+        year: randomYear(2014, 2025),
+        brandId: 4,
+        categoryId: 3,
+        featureId: 2,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "Kona",
+        year: randomYear(2014, 2025),
+        brandId: 3,
+        categoryId: 3,
+        featureId: 4,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+      {
+        title: "Auris",
+        year: randomYear(2014, 2025),
+        brandId: 2,
+        categoryId: 3,
+        featureId: 2,
+        price: randomPrice(80000, 560000),
+        createdAt: new Date(),
+      },
+    ],
   });
 };
 
