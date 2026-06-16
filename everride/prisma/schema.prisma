@@ -47,9 +47,9 @@ model Car {
   // Relation til brand én til mange
   brand Brand @relation(fields: [brandId], references: [id])
 
-  features  CarFeatureRel[]
-  feature   Feature?        @relation(fields: [featureId], references: [id])
-  featureId Int?
+  featureRel CarFeatureRel[]
+  feature    Feature?        @relation(fields: [featureId], references: [id])
+  featureId  Int?
 
   @@map("car") // Navn på tabel
 }
@@ -80,19 +80,19 @@ model Feature {
   name String
 
   // mange til relation
-  cars           Car[]
   carFeatureRels CarFeatureRel[]
+  cars           Car[]
 
   @@map("features") // Navn på tabel
 }
 
 model CarFeatureRel {
   id        Int @id @default(autoincrement()) // Felt til primær nøgle
-  productId Int
+  carId     Int
   featureId Int
 
   // mange til relation
-  cars    Car     @relation(fields: [productId], references: [id])
+  cars    Car     @relation(fields: [carId], references: [id])
   feature Feature @relation(fields: [featureId], references: [id])
 
   @@map("car_feature_rel") // Navn på tabel

@@ -1,0 +1,2 @@
+firstname,lastname,email,password,role,isActive
+Clara,Both,claraboth@gmail.com,kodeord,ADMIN,true

@@ -1,201 +1,88 @@
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient } from "../generated/prisma/client";
+import { prisma } from "../src/prisma";
+import path from "path";
+import { parse } from "csv-parse/sync";
 import bcrypt from "bcrypt";
-import { randomPrice, randomYear } from "../src/utils/seedHelpers";
+import { fileURLToPath } from "node:url";
+import { readFile } from "node:fs/promises";
+import { fieldTypes, type FieldType } from "./types";
 
-const adapter = new PrismaBetterSqlite3({
-  url: process.env.DATABASE_URL ?? "file:./dev.db",
-});
-const prisma = new PrismaClient({ adapter });
+// De modelnavne som seed-scriptet må arbejde med
+type SeedModelName = (typeof order)[number];
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// leder i prisma/data
+const directory = path.join(__dirname, "data");
+
+// Rækkefølgen er vigtig, fordi product bruger brand og category
+const order = [
+  "user",
+  "brand",
+  "category",
+  "feature",
+  "car",
+  "carFeatureRel",
+] as const;
 
 const main = async () => {
-  await prisma.user.deleteMany();
-  await prisma.car.deleteMany();
-  await prisma.feature.deleteMany();
-  await prisma.brand.deleteMany();
-  await prisma.category.deleteMany();
+  try {
+    console.log("Clearing current database");
 
-  const user = await prisma.user.create({
-    data: {
-      firstname: "Test",
-      lastname: "Bruger",
-      email: "test@example.com",
-      password: await bcrypt.hash("password", 10),
-      role: "USER",
-      isActive: true,
-    },
-  });
-  console.log("Seed completed for users:", user);
+    // Slet i omvendt rækkefølge, så relationer ikke blokerer
+    for (const model of [...order].reverse()) {
+      console.log(`Deleting model ${model}`);
+      await (prisma as any)[model].deleteMany();
+    }
+    for (const model of order) {
+      console.log(`seeding ${model}`);
 
-  // Opretter mange brands i databasen
-  const toyota = await prisma.brand.create({
-    data: { name: "Toyota" },
-  });
-  const audi = await prisma.brand.create({
-    data: { name: "Audi" },
-  });
-  const volvo = await prisma.brand.create({
-    data: { name: "Volvo" },
-  });
-  const volkswagen = await prisma.brand.create({
-    data: { name: "Volkswagen" },
-  });
-  const hyundai = await prisma.brand.create({
-    data: { name: "Hyundai" },
-  });
-  console.log(
-    "Seed completed for brands",
-    toyota,
-    audi,
-    volvo,
-    volkswagen,
-    hyundai,
-  );
+      const rows = await readCsv(model);
+      const cleanedData = await Promise.all(
+        rows.map((row) => castRow(model, row)),
+      );
+      await (prisma as any)[model].createMany({
+        data: cleanedData,
+      });
+      console.log(`Seed Completed`);
+    }
+  } catch (error) {
+    console.error(`Seed Failed: ${error}`);
+    // Uanset hvad den laver, disconnecterne den efter trycatch
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+const readCsv = async (model: SeedModelName) => {
+  const fullpath = path.join(directory, `${model}.csv`);
+  const content = await readFile(fullpath, "utf-8");
 
-  // Opretter kategorier i databasen
-  const personbil = await prisma.category.create({
-    data: { name: "Personbil" },
-  });
-  const SUV = await prisma.category.create({
-    data: { name: "SUV" },
-  });
-  const bybil = await prisma.category.create({
-    data: { name: "Bybil" },
-  });
-  const varevogn = await prisma.category.create({
-    data: { name: "varevogn" },
-  });
-  const andre = await prisma.category.create({
-    data: { name: "Andre" },
-  });
-  console.log(
-    "Seed completed for category",
-    personbil,
-    SUV,
-    bybil,
-    varevogn,
-    andre,
-  );
-
-  // Opretter mange drivmidler i databasen
-  const benzin = await prisma.feature.create({
-    data: { name: "Benzin" },
-  });
-
-  const diesel = await prisma.feature.create({
-    data: { name: "Diesel" },
-  });
-
-  const hybrid = await prisma.feature.create({
-    data: { name: "Hybrid" },
-  });
-
-  const el = await prisma.feature.create({
-    data: { name: "El" },
-  });
-  console.log("Seed completed for feature:", benzin, diesel, hybrid, el);
-
-  // Opretter biler i databasen
-  const car1 = await prisma.car.createMany({
-    data: [
-      {
-        title: "Land Cruiser",
-        year: randomYear(2014, 2025),
-        brandId: 1,
-        categoryId: 1,
-        featureId: 1,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "Amazon",
-        year: randomYear(2014, 2025),
-        brandId: 2,
-        categoryId: 2,
-        featureId: 3,
-        price: randomPrice(100000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "RS e-tron GT",
-        year: randomYear(2014, 2025),
-        brandId: 4,
-        categoryId: 2,
-        featureId: 3,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "ID Buzz GTX",
-        year: randomYear(2014, 2025),
-        brandId: 2,
-        categoryId: 4,
-        featureId: 1,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "EX40",
-        year: randomYear(2014, 2025),
-        brandId: 3,
-        categoryId: 5,
-        featureId: 1,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "Caddu Maxi",
-        year: randomYear(2014, 2025),
-        brandId: 2,
-        categoryId: 4,
-        featureId: 2,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "A4",
-        year: randomYear(2014, 2025),
-        brandId: 3,
-        categoryId: 1,
-        featureId: 1,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "Ioniq 5",
-        year: randomYear(2014, 2025),
-        brandId: 4,
-        categoryId: 3,
-        featureId: 2,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "Kona",
-        year: randomYear(2014, 2025),
-        brandId: 3,
-        categoryId: 3,
-        featureId: 4,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-      {
-        title: "Auris",
-        year: randomYear(2014, 2025),
-        brandId: 2,
-        categoryId: 3,
-        featureId: 2,
-        price: randomPrice(80000, 560000),
-        createdAt: new Date(),
-      },
-    ],
-  });
+  // Første række i CSV-filen bliver brugt som feltnavne
+  return parse(content, {
+    columns: true,
+    skip_empty_lines: true,
+  }) as Record<string, any>[];
 };
 
-main()
-  .then(() => prisma.$disconnect())
-  .catch(async (error) => {
-    console.error(error);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+const castRow = async (model: SeedModelName, row: Record<string, any>) => {
+  const schema = fieldTypes[model] as Record<string, FieldType>;
+  const converted: Record<string, any> = {};
+
+  // CSV-værdier er tekst, så de konverteres til de typer Prisma forventer
+  for (const [key, value] of Object.entries(row)) {
+    const type: FieldType = schema[key] || "string";
+    const val = value?.toString().trim();
+
+    if (key === "password") {
+      // Passwords gemmes hashed i databasen
+      converted[key] = await bcrypt.hash(val, 10);
+      continue;
+    }
+    if (type === "number") converted[key] = Number(val);
+    else if (type === "boolean") converted[key] = val === "1" || val === "true";
+    else if (type === "date") converted[key] = new Date(val);
+    else converted[key] = val;
+  }
+
+  return converted;
+};
+main();

@@ -31,8 +31,8 @@ export type CarAvgAggregateOutputType = {
   year: number | null
   categoryId: number | null
   brandId: number | null
-  featureId: number | null
   price: runtime.Decimal | null
+  featureId: number | null
 }
 
 export type CarSumAggregateOutputType = {
@@ -40,8 +40,8 @@ export type CarSumAggregateOutputType = {
   year: number | null
   categoryId: number | null
   brandId: number | null
-  featureId: number | null
   price: runtime.Decimal | null
+  featureId: number | null
 }
 
 export type CarMinAggregateOutputType = {
@@ -50,10 +50,10 @@ export type CarMinAggregateOutputType = {
   year: number | null
   categoryId: number | null
   brandId: number | null
-  featureId: number | null
   price: runtime.Decimal | null
   isActive: boolean | null
   createdAt: Date | null
+  featureId: number | null
 }
 
 export type CarMaxAggregateOutputType = {
@@ -62,10 +62,10 @@ export type CarMaxAggregateOutputType = {
   year: number | null
   categoryId: number | null
   brandId: number | null
-  featureId: number | null
   price: runtime.Decimal | null
   isActive: boolean | null
   createdAt: Date | null
+  featureId: number | null
 }
 
 export type CarCountAggregateOutputType = {
@@ -74,10 +74,10 @@ export type CarCountAggregateOutputType = {
   year: number
   categoryId: number
   brandId: number
-  featureId: number
   price: number
   isActive: number
   createdAt: number
+  featureId: number
   _all: number
 }
 
@@ -87,8 +87,8 @@ export type CarAvgAggregateInputType = {
   year?: true
   categoryId?: true
   brandId?: true
-  featureId?: true
   price?: true
+  featureId?: true
 }
 
 export type CarSumAggregateInputType = {
@@ -96,8 +96,8 @@ export type CarSumAggregateInputType = {
   year?: true
   categoryId?: true
   brandId?: true
-  featureId?: true
   price?: true
+  featureId?: true
 }
 
 export type CarMinAggregateInputType = {
@@ -106,10 +106,10 @@ export type CarMinAggregateInputType = {
   year?: true
   categoryId?: true
   brandId?: true
-  featureId?: true
   price?: true
   isActive?: true
   createdAt?: true
+  featureId?: true
 }
 
 export type CarMaxAggregateInputType = {
@@ -118,10 +118,10 @@ export type CarMaxAggregateInputType = {
   year?: true
   categoryId?: true
   brandId?: true
-  featureId?: true
   price?: true
   isActive?: true
   createdAt?: true
+  featureId?: true
 }
 
 export type CarCountAggregateInputType = {
@@ -130,10 +130,10 @@ export type CarCountAggregateInputType = {
   year?: true
   categoryId?: true
   brandId?: true
-  featureId?: true
   price?: true
   isActive?: true
   createdAt?: true
+  featureId?: true
   _all?: true
 }
 
@@ -229,10 +229,10 @@ export type CarGroupByOutputType = {
   year: number
   categoryId: number
   brandId: number
-  featureId: number
   price: runtime.Decimal
   isActive: boolean
   createdAt: Date
+  featureId: number | null
   _count: CarCountAggregateOutputType | null
   _avg: CarAvgAggregateOutputType | null
   _sum: CarSumAggregateOutputType | null
@@ -264,14 +264,14 @@ export type CarWhereInput = {
   year?: Prisma.IntFilter<"Car"> | number
   categoryId?: Prisma.IntFilter<"Car"> | number
   brandId?: Prisma.IntFilter<"Car"> | number
-  featureId?: Prisma.IntFilter<"Car"> | number
   price?: Prisma.DecimalFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFilter<"Car"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Car"> | Date | string
+  featureId?: Prisma.IntNullableFilter<"Car"> | number | null
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
-  features?: Prisma.CarFeatureRelListRelationFilter
-  feature?: Prisma.XOR<Prisma.FeatureScalarRelationFilter, Prisma.FeatureWhereInput>
+  featureRel?: Prisma.CarFeatureRelListRelationFilter
+  feature?: Prisma.XOR<Prisma.FeatureNullableScalarRelationFilter, Prisma.FeatureWhereInput> | null
 }
 
 export type CarOrderByWithRelationInput = {
@@ -280,13 +280,13 @@ export type CarOrderByWithRelationInput = {
   year?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  featureId?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.CategoryOrderByWithRelationInput
   brand?: Prisma.BrandOrderByWithRelationInput
-  features?: Prisma.CarFeatureRelOrderByRelationAggregateInput
+  featureRel?: Prisma.CarFeatureRelOrderByRelationAggregateInput
   feature?: Prisma.FeatureOrderByWithRelationInput
 }
 
@@ -299,14 +299,14 @@ export type CarWhereUniqueInput = Prisma.AtLeast<{
   year?: Prisma.IntFilter<"Car"> | number
   categoryId?: Prisma.IntFilter<"Car"> | number
   brandId?: Prisma.IntFilter<"Car"> | number
-  featureId?: Prisma.IntFilter<"Car"> | number
   price?: Prisma.DecimalFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFilter<"Car"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Car"> | Date | string
+  featureId?: Prisma.IntNullableFilter<"Car"> | number | null
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
-  features?: Prisma.CarFeatureRelListRelationFilter
-  feature?: Prisma.XOR<Prisma.FeatureScalarRelationFilter, Prisma.FeatureWhereInput>
+  featureRel?: Prisma.CarFeatureRelListRelationFilter
+  feature?: Prisma.XOR<Prisma.FeatureNullableScalarRelationFilter, Prisma.FeatureWhereInput> | null
 }, "id">
 
 export type CarOrderByWithAggregationInput = {
@@ -315,10 +315,10 @@ export type CarOrderByWithAggregationInput = {
   year?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  featureId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CarCountOrderByAggregateInput
   _avg?: Prisma.CarAvgOrderByAggregateInput
   _max?: Prisma.CarMaxOrderByAggregateInput
@@ -335,10 +335,10 @@ export type CarScalarWhereWithAggregatesInput = {
   year?: Prisma.IntWithAggregatesFilter<"Car"> | number
   categoryId?: Prisma.IntWithAggregatesFilter<"Car"> | number
   brandId?: Prisma.IntWithAggregatesFilter<"Car"> | number
-  featureId?: Prisma.IntWithAggregatesFilter<"Car"> | number
   price?: Prisma.DecimalWithAggregatesFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolWithAggregatesFilter<"Car"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Car"> | Date | string
+  featureId?: Prisma.IntNullableWithAggregatesFilter<"Car"> | number | null
 }
 
 export type CarCreateInput = {
@@ -349,8 +349,8 @@ export type CarCreateInput = {
   createdAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutCarsInput
   brand: Prisma.BrandCreateNestedOneWithoutCarsInput
-  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
-  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
+  featureRel?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+  feature?: Prisma.FeatureCreateNestedOneWithoutCarsInput
 }
 
 export type CarUncheckedCreateInput = {
@@ -359,11 +359,11 @@ export type CarUncheckedCreateInput = {
   year: number
   categoryId: number
   brandId: number
-  featureId: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
-  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
+  featureId?: number | null
+  featureRel?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
 }
 
 export type CarUpdateInput = {
@@ -374,8 +374,8 @@ export type CarUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
   brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
-  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
-  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
+  featureRel?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateInput = {
@@ -384,11 +384,11 @@ export type CarUncheckedUpdateInput = {
   year?: Prisma.IntFieldUpdateOperationsInput | number
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  featureId?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
+  featureId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureRel?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
 }
 
 export type CarCreateManyInput = {
@@ -397,10 +397,10 @@ export type CarCreateManyInput = {
   year: number
   categoryId: number
   brandId: number
-  featureId: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
+  featureId?: number | null
 }
 
 export type CarUpdateManyMutationInput = {
@@ -417,10 +417,10 @@ export type CarUncheckedUpdateManyInput = {
   year?: Prisma.IntFieldUpdateOperationsInput | number
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  featureId?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  featureId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type CarCountOrderByAggregateInput = {
@@ -429,10 +429,10 @@ export type CarCountOrderByAggregateInput = {
   year?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type CarAvgOrderByAggregateInput = {
@@ -440,8 +440,8 @@ export type CarAvgOrderByAggregateInput = {
   year?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type CarMaxOrderByAggregateInput = {
@@ -450,10 +450,10 @@ export type CarMaxOrderByAggregateInput = {
   year?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type CarMinOrderByAggregateInput = {
@@ -462,10 +462,10 @@ export type CarMinOrderByAggregateInput = {
   year?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type CarSumOrderByAggregateInput = {
@@ -473,8 +473,8 @@ export type CarSumOrderByAggregateInput = {
   year?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type CarListRelationFilter = {
@@ -498,6 +498,14 @@ export type DecimalFieldUpdateOperationsInput = {
   decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
   multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type CarCreateNestedManyWithoutCategoryInput = {
@@ -626,18 +634,18 @@ export type CarUncheckedUpdateManyWithoutFeatureNestedInput = {
   deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
 }
 
-export type CarCreateNestedOneWithoutFeaturesInput = {
-  create?: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
-  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeaturesInput
+export type CarCreateNestedOneWithoutFeatureRelInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeatureRelInput, Prisma.CarUncheckedCreateWithoutFeatureRelInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeatureRelInput
   connect?: Prisma.CarWhereUniqueInput
 }
 
-export type CarUpdateOneRequiredWithoutFeaturesNestedInput = {
-  create?: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
-  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeaturesInput
-  upsert?: Prisma.CarUpsertWithoutFeaturesInput
+export type CarUpdateOneRequiredWithoutFeatureRelNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutFeatureRelInput, Prisma.CarUncheckedCreateWithoutFeatureRelInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutFeatureRelInput
+  upsert?: Prisma.CarUpsertWithoutFeatureRelInput
   connect?: Prisma.CarWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutFeaturesInput, Prisma.CarUpdateWithoutFeaturesInput>, Prisma.CarUncheckedUpdateWithoutFeaturesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutFeatureRelInput, Prisma.CarUpdateWithoutFeatureRelInput>, Prisma.CarUncheckedUpdateWithoutFeatureRelInput>
 }
 
 export type CarCreateWithoutCategoryInput = {
@@ -647,8 +655,8 @@ export type CarCreateWithoutCategoryInput = {
   isActive?: boolean
   createdAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutCarsInput
-  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
-  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
+  featureRel?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+  feature?: Prisma.FeatureCreateNestedOneWithoutCarsInput
 }
 
 export type CarUncheckedCreateWithoutCategoryInput = {
@@ -656,11 +664,11 @@ export type CarUncheckedCreateWithoutCategoryInput = {
   title: string
   year: number
   brandId: number
-  featureId: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
-  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
+  featureId?: number | null
+  featureRel?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
 }
 
 export type CarCreateOrConnectWithoutCategoryInput = {
@@ -697,10 +705,10 @@ export type CarScalarWhereInput = {
   year?: Prisma.IntFilter<"Car"> | number
   categoryId?: Prisma.IntFilter<"Car"> | number
   brandId?: Prisma.IntFilter<"Car"> | number
-  featureId?: Prisma.IntFilter<"Car"> | number
   price?: Prisma.DecimalFilter<"Car"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFilter<"Car"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Car"> | Date | string
+  featureId?: Prisma.IntNullableFilter<"Car"> | number | null
 }
 
 export type CarCreateWithoutBrandInput = {
@@ -710,8 +718,8 @@ export type CarCreateWithoutBrandInput = {
   isActive?: boolean
   createdAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutCarsInput
-  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
-  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
+  featureRel?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+  feature?: Prisma.FeatureCreateNestedOneWithoutCarsInput
 }
 
 export type CarUncheckedCreateWithoutBrandInput = {
@@ -719,11 +727,11 @@ export type CarUncheckedCreateWithoutBrandInput = {
   title: string
   year: number
   categoryId: number
-  featureId: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
-  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
+  featureId?: number | null
+  featureRel?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
 }
 
 export type CarCreateOrConnectWithoutBrandInput = {
@@ -759,7 +767,7 @@ export type CarCreateWithoutFeatureInput = {
   createdAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutCarsInput
   brand: Prisma.BrandCreateNestedOneWithoutCarsInput
-  features?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
+  featureRel?: Prisma.CarFeatureRelCreateNestedManyWithoutCarsInput
 }
 
 export type CarUncheckedCreateWithoutFeatureInput = {
@@ -771,7 +779,7 @@ export type CarUncheckedCreateWithoutFeatureInput = {
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
-  features?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
+  featureRel?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutCarsInput
 }
 
 export type CarCreateOrConnectWithoutFeatureInput = {
@@ -799,7 +807,7 @@ export type CarUpdateManyWithWhereWithoutFeatureInput = {
   data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyWithoutFeatureInput>
 }
 
-export type CarCreateWithoutFeaturesInput = {
+export type CarCreateWithoutFeatureRelInput = {
   title: string
   year: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -807,38 +815,38 @@ export type CarCreateWithoutFeaturesInput = {
   createdAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutCarsInput
   brand: Prisma.BrandCreateNestedOneWithoutCarsInput
-  feature: Prisma.FeatureCreateNestedOneWithoutCarsInput
+  feature?: Prisma.FeatureCreateNestedOneWithoutCarsInput
 }
 
-export type CarUncheckedCreateWithoutFeaturesInput = {
+export type CarUncheckedCreateWithoutFeatureRelInput = {
   id?: number
   title: string
   year: number
   categoryId: number
   brandId: number
-  featureId: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
+  featureId?: number | null
 }
 
-export type CarCreateOrConnectWithoutFeaturesInput = {
+export type CarCreateOrConnectWithoutFeatureRelInput = {
   where: Prisma.CarWhereUniqueInput
-  create: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutFeatureRelInput, Prisma.CarUncheckedCreateWithoutFeatureRelInput>
 }
 
-export type CarUpsertWithoutFeaturesInput = {
-  update: Prisma.XOR<Prisma.CarUpdateWithoutFeaturesInput, Prisma.CarUncheckedUpdateWithoutFeaturesInput>
-  create: Prisma.XOR<Prisma.CarCreateWithoutFeaturesInput, Prisma.CarUncheckedCreateWithoutFeaturesInput>
+export type CarUpsertWithoutFeatureRelInput = {
+  update: Prisma.XOR<Prisma.CarUpdateWithoutFeatureRelInput, Prisma.CarUncheckedUpdateWithoutFeatureRelInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutFeatureRelInput, Prisma.CarUncheckedCreateWithoutFeatureRelInput>
   where?: Prisma.CarWhereInput
 }
 
-export type CarUpdateToOneWithWhereWithoutFeaturesInput = {
+export type CarUpdateToOneWithWhereWithoutFeatureRelInput = {
   where?: Prisma.CarWhereInput
-  data: Prisma.XOR<Prisma.CarUpdateWithoutFeaturesInput, Prisma.CarUncheckedUpdateWithoutFeaturesInput>
+  data: Prisma.XOR<Prisma.CarUpdateWithoutFeatureRelInput, Prisma.CarUncheckedUpdateWithoutFeatureRelInput>
 }
 
-export type CarUpdateWithoutFeaturesInput = {
+export type CarUpdateWithoutFeatureRelInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -846,19 +854,19 @@ export type CarUpdateWithoutFeaturesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
   brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
-  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneWithoutCarsNestedInput
 }
 
-export type CarUncheckedUpdateWithoutFeaturesInput = {
+export type CarUncheckedUpdateWithoutFeatureRelInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  featureId?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  featureId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type CarCreateManyCategoryInput = {
@@ -866,10 +874,10 @@ export type CarCreateManyCategoryInput = {
   title: string
   year: number
   brandId: number
-  featureId: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
+  featureId?: number | null
 }
 
 export type CarUpdateWithoutCategoryInput = {
@@ -879,8 +887,8 @@ export type CarUpdateWithoutCategoryInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
-  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
-  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
+  featureRel?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateWithoutCategoryInput = {
@@ -888,11 +896,11 @@ export type CarUncheckedUpdateWithoutCategoryInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  featureId?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
+  featureId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureRel?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutCategoryInput = {
@@ -900,10 +908,10 @@ export type CarUncheckedUpdateManyWithoutCategoryInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   brandId?: Prisma.IntFieldUpdateOperationsInput | number
-  featureId?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  featureId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type CarCreateManyBrandInput = {
@@ -911,10 +919,10 @@ export type CarCreateManyBrandInput = {
   title: string
   year: number
   categoryId: number
-  featureId: number
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: boolean
   createdAt?: Date | string
+  featureId?: number | null
 }
 
 export type CarUpdateWithoutBrandInput = {
@@ -924,8 +932,8 @@ export type CarUpdateWithoutBrandInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
-  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
-  feature?: Prisma.FeatureUpdateOneRequiredWithoutCarsNestedInput
+  featureRel?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+  feature?: Prisma.FeatureUpdateOneWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateWithoutBrandInput = {
@@ -933,11 +941,11 @@ export type CarUncheckedUpdateWithoutBrandInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  featureId?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
+  featureId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureRel?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutBrandInput = {
@@ -945,10 +953,10 @@ export type CarUncheckedUpdateManyWithoutBrandInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  featureId?: Prisma.IntFieldUpdateOperationsInput | number
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  featureId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type CarCreateManyFeatureInput = {
@@ -970,7 +978,7 @@ export type CarUpdateWithoutFeatureInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutCarsNestedInput
   brand?: Prisma.BrandUpdateOneRequiredWithoutCarsNestedInput
-  features?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
+  featureRel?: Prisma.CarFeatureRelUpdateManyWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateWithoutFeatureInput = {
@@ -982,7 +990,7 @@ export type CarUncheckedUpdateWithoutFeatureInput = {
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  features?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
+  featureRel?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutCarsNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutFeatureInput = {
@@ -1002,11 +1010,11 @@ export type CarUncheckedUpdateManyWithoutFeatureInput = {
  */
 
 export type CarCountOutputType = {
-  features: number
+  featureRel: number
 }
 
 export type CarCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  features?: boolean | CarCountOutputTypeCountFeaturesArgs
+  featureRel?: boolean | CarCountOutputTypeCountFeatureRelArgs
 }
 
 /**
@@ -1022,7 +1030,7 @@ export type CarCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensio
 /**
  * CarCountOutputType without action
  */
-export type CarCountOutputTypeCountFeaturesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type CarCountOutputTypeCountFeatureRelArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.CarFeatureRelWhereInput
 }
 
@@ -1033,14 +1041,14 @@ export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   year?: boolean
   categoryId?: boolean
   brandId?: boolean
-  featureId?: boolean
   price?: boolean
   isActive?: boolean
   createdAt?: boolean
+  featureId?: boolean
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
-  features?: boolean | Prisma.Car$featuresArgs<ExtArgs>
-  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  featureRel?: boolean | Prisma.Car$featureRelArgs<ExtArgs>
+  feature?: boolean | Prisma.Car$featureArgs<ExtArgs>
   _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
@@ -1050,13 +1058,13 @@ export type CarSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   year?: boolean
   categoryId?: boolean
   brandId?: boolean
-  featureId?: boolean
   price?: boolean
   isActive?: boolean
   createdAt?: boolean
+  featureId?: boolean
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
-  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.Car$featureArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
 export type CarSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1065,13 +1073,13 @@ export type CarSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   year?: boolean
   categoryId?: boolean
   brandId?: boolean
-  featureId?: boolean
   price?: boolean
   isActive?: boolean
   createdAt?: boolean
+  featureId?: boolean
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
-  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.Car$featureArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
 export type CarSelectScalar = {
@@ -1080,29 +1088,29 @@ export type CarSelectScalar = {
   year?: boolean
   categoryId?: boolean
   brandId?: boolean
-  featureId?: boolean
   price?: boolean
   isActive?: boolean
   createdAt?: boolean
+  featureId?: boolean
 }
 
-export type CarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "year" | "categoryId" | "brandId" | "featureId" | "price" | "isActive" | "createdAt", ExtArgs["result"]["car"]>
+export type CarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "year" | "categoryId" | "brandId" | "price" | "isActive" | "createdAt" | "featureId", ExtArgs["result"]["car"]>
 export type CarInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
-  features?: boolean | Prisma.Car$featuresArgs<ExtArgs>
-  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  featureRel?: boolean | Prisma.Car$featureRelArgs<ExtArgs>
+  feature?: boolean | Prisma.Car$featureArgs<ExtArgs>
   _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CarIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
-  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.Car$featureArgs<ExtArgs>
 }
 export type CarIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
-  feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.Car$featureArgs<ExtArgs>
 }
 
 export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1110,8 +1118,8 @@ export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   objects: {
     category: Prisma.$CategoryPayload<ExtArgs>
     brand: Prisma.$BrandPayload<ExtArgs>
-    features: Prisma.$CarFeatureRelPayload<ExtArgs>[]
-    feature: Prisma.$FeaturePayload<ExtArgs>
+    featureRel: Prisma.$CarFeatureRelPayload<ExtArgs>[]
+    feature: Prisma.$FeaturePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1119,10 +1127,10 @@ export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     year: number
     categoryId: number
     brandId: number
-    featureId: number
     price: runtime.Decimal
     isActive: boolean
     createdAt: Date
+    featureId: number | null
   }, ExtArgs["result"]["car"]>
   composites: {}
 }
@@ -1519,8 +1527,8 @@ export interface Prisma__CarClient<T, Null = never, ExtArgs extends runtime.Type
   readonly [Symbol.toStringTag]: "PrismaPromise"
   category<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  features<T extends Prisma.Car$featuresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$featuresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarFeatureRelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  feature<T extends Prisma.FeatureDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FeatureDefaultArgs<ExtArgs>>): Prisma.Prisma__FeatureClient<runtime.Types.Result.GetResult<Prisma.$FeaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  featureRel<T extends Prisma.Car$featureRelArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$featureRelArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarFeatureRelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  feature<T extends Prisma.Car$featureArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$featureArgs<ExtArgs>>): Prisma.Prisma__FeatureClient<runtime.Types.Result.GetResult<Prisma.$FeaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1555,10 +1563,10 @@ export interface CarFieldRefs {
   readonly year: Prisma.FieldRef<"Car", 'Int'>
   readonly categoryId: Prisma.FieldRef<"Car", 'Int'>
   readonly brandId: Prisma.FieldRef<"Car", 'Int'>
-  readonly featureId: Prisma.FieldRef<"Car", 'Int'>
   readonly price: Prisma.FieldRef<"Car", 'Decimal'>
   readonly isActive: Prisma.FieldRef<"Car", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Car", 'DateTime'>
+  readonly featureId: Prisma.FieldRef<"Car", 'Int'>
 }
     
 
@@ -1958,9 +1966,9 @@ export type CarDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * Car.features
+ * Car.featureRel
  */
-export type Car$featuresArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Car$featureRelArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the CarFeatureRel
    */
@@ -1979,6 +1987,25 @@ export type Car$featuresArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.CarFeatureRelScalarFieldEnum | Prisma.CarFeatureRelScalarFieldEnum[]
+}
+
+/**
+ * Car.feature
+ */
+export type Car$featureArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Feature
+   */
+  select?: Prisma.FeatureSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Feature
+   */
+  omit?: Prisma.FeatureOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeatureInclude<ExtArgs> | null
+  where?: Prisma.FeatureWhereInput
 }
 
 /**

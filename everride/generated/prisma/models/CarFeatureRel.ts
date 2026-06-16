@@ -28,31 +28,31 @@ export type AggregateCarFeatureRel = {
 
 export type CarFeatureRelAvgAggregateOutputType = {
   id: number | null
-  productId: number | null
+  carId: number | null
   featureId: number | null
 }
 
 export type CarFeatureRelSumAggregateOutputType = {
   id: number | null
-  productId: number | null
+  carId: number | null
   featureId: number | null
 }
 
 export type CarFeatureRelMinAggregateOutputType = {
   id: number | null
-  productId: number | null
+  carId: number | null
   featureId: number | null
 }
 
 export type CarFeatureRelMaxAggregateOutputType = {
   id: number | null
-  productId: number | null
+  carId: number | null
   featureId: number | null
 }
 
 export type CarFeatureRelCountAggregateOutputType = {
   id: number
-  productId: number
+  carId: number
   featureId: number
   _all: number
 }
@@ -60,31 +60,31 @@ export type CarFeatureRelCountAggregateOutputType = {
 
 export type CarFeatureRelAvgAggregateInputType = {
   id?: true
-  productId?: true
+  carId?: true
   featureId?: true
 }
 
 export type CarFeatureRelSumAggregateInputType = {
   id?: true
-  productId?: true
+  carId?: true
   featureId?: true
 }
 
 export type CarFeatureRelMinAggregateInputType = {
   id?: true
-  productId?: true
+  carId?: true
   featureId?: true
 }
 
 export type CarFeatureRelMaxAggregateInputType = {
   id?: true
-  productId?: true
+  carId?: true
   featureId?: true
 }
 
 export type CarFeatureRelCountAggregateInputType = {
   id?: true
-  productId?: true
+  carId?: true
   featureId?: true
   _all?: true
 }
@@ -177,7 +177,7 @@ export type CarFeatureRelGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 
 export type CarFeatureRelGroupByOutputType = {
   id: number
-  productId: number
+  carId: number
   featureId: number
   _count: CarFeatureRelCountAggregateOutputType | null
   _avg: CarFeatureRelAvgAggregateOutputType | null
@@ -206,7 +206,7 @@ export type CarFeatureRelWhereInput = {
   OR?: Prisma.CarFeatureRelWhereInput[]
   NOT?: Prisma.CarFeatureRelWhereInput | Prisma.CarFeatureRelWhereInput[]
   id?: Prisma.IntFilter<"CarFeatureRel"> | number
-  productId?: Prisma.IntFilter<"CarFeatureRel"> | number
+  carId?: Prisma.IntFilter<"CarFeatureRel"> | number
   featureId?: Prisma.IntFilter<"CarFeatureRel"> | number
   cars?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
   feature?: Prisma.XOR<Prisma.FeatureScalarRelationFilter, Prisma.FeatureWhereInput>
@@ -214,7 +214,7 @@ export type CarFeatureRelWhereInput = {
 
 export type CarFeatureRelOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   featureId?: Prisma.SortOrder
   cars?: Prisma.CarOrderByWithRelationInput
   feature?: Prisma.FeatureOrderByWithRelationInput
@@ -225,7 +225,7 @@ export type CarFeatureRelWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CarFeatureRelWhereInput | Prisma.CarFeatureRelWhereInput[]
   OR?: Prisma.CarFeatureRelWhereInput[]
   NOT?: Prisma.CarFeatureRelWhereInput | Prisma.CarFeatureRelWhereInput[]
-  productId?: Prisma.IntFilter<"CarFeatureRel"> | number
+  carId?: Prisma.IntFilter<"CarFeatureRel"> | number
   featureId?: Prisma.IntFilter<"CarFeatureRel"> | number
   cars?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
   feature?: Prisma.XOR<Prisma.FeatureScalarRelationFilter, Prisma.FeatureWhereInput>
@@ -233,7 +233,7 @@ export type CarFeatureRelWhereUniqueInput = Prisma.AtLeast<{
 
 export type CarFeatureRelOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   featureId?: Prisma.SortOrder
   _count?: Prisma.CarFeatureRelCountOrderByAggregateInput
   _avg?: Prisma.CarFeatureRelAvgOrderByAggregateInput
@@ -247,35 +247,35 @@ export type CarFeatureRelScalarWhereWithAggregatesInput = {
   OR?: Prisma.CarFeatureRelScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CarFeatureRelScalarWhereWithAggregatesInput | Prisma.CarFeatureRelScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"CarFeatureRel"> | number
-  productId?: Prisma.IntWithAggregatesFilter<"CarFeatureRel"> | number
+  carId?: Prisma.IntWithAggregatesFilter<"CarFeatureRel"> | number
   featureId?: Prisma.IntWithAggregatesFilter<"CarFeatureRel"> | number
 }
 
 export type CarFeatureRelCreateInput = {
-  cars: Prisma.CarCreateNestedOneWithoutFeaturesInput
+  cars: Prisma.CarCreateNestedOneWithoutFeatureRelInput
   feature: Prisma.FeatureCreateNestedOneWithoutCarFeatureRelsInput
 }
 
 export type CarFeatureRelUncheckedCreateInput = {
   id?: number
-  productId: number
+  carId: number
   featureId: number
 }
 
 export type CarFeatureRelUpdateInput = {
-  cars?: Prisma.CarUpdateOneRequiredWithoutFeaturesNestedInput
+  cars?: Prisma.CarUpdateOneRequiredWithoutFeatureRelNestedInput
   feature?: Prisma.FeatureUpdateOneRequiredWithoutCarFeatureRelsNestedInput
 }
 
 export type CarFeatureRelUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  productId?: Prisma.IntFieldUpdateOperationsInput | number
+  carId?: Prisma.IntFieldUpdateOperationsInput | number
   featureId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarFeatureRelCreateManyInput = {
   id?: number
-  productId: number
+  carId: number
   featureId: number
 }
 
@@ -285,7 +285,7 @@ export type CarFeatureRelUpdateManyMutationInput = {
 
 export type CarFeatureRelUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  productId?: Prisma.IntFieldUpdateOperationsInput | number
+  carId?: Prisma.IntFieldUpdateOperationsInput | number
   featureId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -301,31 +301,31 @@ export type CarFeatureRelOrderByRelationAggregateInput = {
 
 export type CarFeatureRelCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   featureId?: Prisma.SortOrder
 }
 
 export type CarFeatureRelAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   featureId?: Prisma.SortOrder
 }
 
 export type CarFeatureRelMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   featureId?: Prisma.SortOrder
 }
 
 export type CarFeatureRelMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   featureId?: Prisma.SortOrder
 }
 
 export type CarFeatureRelSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   featureId?: Prisma.SortOrder
 }
 
@@ -452,17 +452,17 @@ export type CarFeatureRelScalarWhereInput = {
   OR?: Prisma.CarFeatureRelScalarWhereInput[]
   NOT?: Prisma.CarFeatureRelScalarWhereInput | Prisma.CarFeatureRelScalarWhereInput[]
   id?: Prisma.IntFilter<"CarFeatureRel"> | number
-  productId?: Prisma.IntFilter<"CarFeatureRel"> | number
+  carId?: Prisma.IntFilter<"CarFeatureRel"> | number
   featureId?: Prisma.IntFilter<"CarFeatureRel"> | number
 }
 
 export type CarFeatureRelCreateWithoutFeatureInput = {
-  cars: Prisma.CarCreateNestedOneWithoutFeaturesInput
+  cars: Prisma.CarCreateNestedOneWithoutFeatureRelInput
 }
 
 export type CarFeatureRelUncheckedCreateWithoutFeatureInput = {
   id?: number
-  productId: number
+  carId: number
 }
 
 export type CarFeatureRelCreateOrConnectWithoutFeatureInput = {
@@ -511,28 +511,28 @@ export type CarFeatureRelUncheckedUpdateManyWithoutCarsInput = {
 
 export type CarFeatureRelCreateManyFeatureInput = {
   id?: number
-  productId: number
+  carId: number
 }
 
 export type CarFeatureRelUpdateWithoutFeatureInput = {
-  cars?: Prisma.CarUpdateOneRequiredWithoutFeaturesNestedInput
+  cars?: Prisma.CarUpdateOneRequiredWithoutFeatureRelNestedInput
 }
 
 export type CarFeatureRelUncheckedUpdateWithoutFeatureInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  productId?: Prisma.IntFieldUpdateOperationsInput | number
+  carId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarFeatureRelUncheckedUpdateManyWithoutFeatureInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  productId?: Prisma.IntFieldUpdateOperationsInput | number
+  carId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
 
 export type CarFeatureRelSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  productId?: boolean
+  carId?: boolean
   featureId?: boolean
   cars?: boolean | Prisma.CarDefaultArgs<ExtArgs>
   feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
@@ -540,7 +540,7 @@ export type CarFeatureRelSelect<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type CarFeatureRelSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  productId?: boolean
+  carId?: boolean
   featureId?: boolean
   cars?: boolean | Prisma.CarDefaultArgs<ExtArgs>
   feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
@@ -548,7 +548,7 @@ export type CarFeatureRelSelectCreateManyAndReturn<ExtArgs extends runtime.Types
 
 export type CarFeatureRelSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  productId?: boolean
+  carId?: boolean
   featureId?: boolean
   cars?: boolean | Prisma.CarDefaultArgs<ExtArgs>
   feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
@@ -556,11 +556,11 @@ export type CarFeatureRelSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
 
 export type CarFeatureRelSelectScalar = {
   id?: boolean
-  productId?: boolean
+  carId?: boolean
   featureId?: boolean
 }
 
-export type CarFeatureRelOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "featureId", ExtArgs["result"]["carFeatureRel"]>
+export type CarFeatureRelOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "carId" | "featureId", ExtArgs["result"]["carFeatureRel"]>
 export type CarFeatureRelInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cars?: boolean | Prisma.CarDefaultArgs<ExtArgs>
   feature?: boolean | Prisma.FeatureDefaultArgs<ExtArgs>
@@ -582,7 +582,7 @@ export type $CarFeatureRelPayload<ExtArgs extends runtime.Types.Extensions.Inter
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    productId: number
+    carId: number
     featureId: number
   }, ExtArgs["result"]["carFeatureRel"]>
   composites: {}
@@ -1010,7 +1010,7 @@ export interface Prisma__CarFeatureRelClient<T, Null = never, ExtArgs extends ru
  */
 export interface CarFeatureRelFieldRefs {
   readonly id: Prisma.FieldRef<"CarFeatureRel", 'Int'>
-  readonly productId: Prisma.FieldRef<"CarFeatureRel", 'Int'>
+  readonly carId: Prisma.FieldRef<"CarFeatureRel", 'Int'>
   readonly featureId: Prisma.FieldRef<"CarFeatureRel", 'Int'>
 }
     

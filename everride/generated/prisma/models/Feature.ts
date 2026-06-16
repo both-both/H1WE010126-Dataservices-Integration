@@ -192,15 +192,15 @@ export type FeatureWhereInput = {
   NOT?: Prisma.FeatureWhereInput | Prisma.FeatureWhereInput[]
   id?: Prisma.IntFilter<"Feature"> | number
   name?: Prisma.StringFilter<"Feature"> | string
-  cars?: Prisma.CarListRelationFilter
   carFeatureRels?: Prisma.CarFeatureRelListRelationFilter
+  cars?: Prisma.CarListRelationFilter
 }
 
 export type FeatureOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  cars?: Prisma.CarOrderByRelationAggregateInput
   carFeatureRels?: Prisma.CarFeatureRelOrderByRelationAggregateInput
+  cars?: Prisma.CarOrderByRelationAggregateInput
 }
 
 export type FeatureWhereUniqueInput = Prisma.AtLeast<{
@@ -209,8 +209,8 @@ export type FeatureWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.FeatureWhereInput[]
   NOT?: Prisma.FeatureWhereInput | Prisma.FeatureWhereInput[]
   name?: Prisma.StringFilter<"Feature"> | string
-  cars?: Prisma.CarListRelationFilter
   carFeatureRels?: Prisma.CarFeatureRelListRelationFilter
+  cars?: Prisma.CarListRelationFilter
 }, "id">
 
 export type FeatureOrderByWithAggregationInput = {
@@ -233,28 +233,28 @@ export type FeatureScalarWhereWithAggregatesInput = {
 
 export type FeatureCreateInput = {
   name: string
-  cars?: Prisma.CarCreateNestedManyWithoutFeatureInput
   carFeatureRels?: Prisma.CarFeatureRelCreateNestedManyWithoutFeatureInput
+  cars?: Prisma.CarCreateNestedManyWithoutFeatureInput
 }
 
 export type FeatureUncheckedCreateInput = {
   id?: number
   name: string
-  cars?: Prisma.CarUncheckedCreateNestedManyWithoutFeatureInput
   carFeatureRels?: Prisma.CarFeatureRelUncheckedCreateNestedManyWithoutFeatureInput
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutFeatureInput
 }
 
 export type FeatureUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  cars?: Prisma.CarUpdateManyWithoutFeatureNestedInput
   carFeatureRels?: Prisma.CarFeatureRelUpdateManyWithoutFeatureNestedInput
+  cars?: Prisma.CarUpdateManyWithoutFeatureNestedInput
 }
 
 export type FeatureUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  cars?: Prisma.CarUncheckedUpdateManyWithoutFeatureNestedInput
   carFeatureRels?: Prisma.CarFeatureRelUncheckedUpdateManyWithoutFeatureNestedInput
+  cars?: Prisma.CarUncheckedUpdateManyWithoutFeatureNestedInput
 }
 
 export type FeatureCreateManyInput = {
@@ -271,9 +271,9 @@ export type FeatureUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type FeatureScalarRelationFilter = {
-  is?: Prisma.FeatureWhereInput
-  isNot?: Prisma.FeatureWhereInput
+export type FeatureNullableScalarRelationFilter = {
+  is?: Prisma.FeatureWhereInput | null
+  isNot?: Prisma.FeatureWhereInput | null
 }
 
 export type FeatureCountOrderByAggregateInput = {
@@ -299,16 +299,23 @@ export type FeatureSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type FeatureScalarRelationFilter = {
+  is?: Prisma.FeatureWhereInput
+  isNot?: Prisma.FeatureWhereInput
+}
+
 export type FeatureCreateNestedOneWithoutCarsInput = {
   create?: Prisma.XOR<Prisma.FeatureCreateWithoutCarsInput, Prisma.FeatureUncheckedCreateWithoutCarsInput>
   connectOrCreate?: Prisma.FeatureCreateOrConnectWithoutCarsInput
   connect?: Prisma.FeatureWhereUniqueInput
 }
 
-export type FeatureUpdateOneRequiredWithoutCarsNestedInput = {
+export type FeatureUpdateOneWithoutCarsNestedInput = {
   create?: Prisma.XOR<Prisma.FeatureCreateWithoutCarsInput, Prisma.FeatureUncheckedCreateWithoutCarsInput>
   connectOrCreate?: Prisma.FeatureCreateOrConnectWithoutCarsInput
   upsert?: Prisma.FeatureUpsertWithoutCarsInput
+  disconnect?: Prisma.FeatureWhereInput | boolean
+  delete?: Prisma.FeatureWhereInput | boolean
   connect?: Prisma.FeatureWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.FeatureUpdateToOneWithWhereWithoutCarsInput, Prisma.FeatureUpdateWithoutCarsInput>, Prisma.FeatureUncheckedUpdateWithoutCarsInput>
 }
@@ -409,13 +416,13 @@ export type FeatureUncheckedUpdateWithoutCarFeatureRelsInput = {
  */
 
 export type FeatureCountOutputType = {
-  cars: number
   carFeatureRels: number
+  cars: number
 }
 
 export type FeatureCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  cars?: boolean | FeatureCountOutputTypeCountCarsArgs
   carFeatureRels?: boolean | FeatureCountOutputTypeCountCarFeatureRelsArgs
+  cars?: boolean | FeatureCountOutputTypeCountCarsArgs
 }
 
 /**
@@ -431,23 +438,23 @@ export type FeatureCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * FeatureCountOutputType without action
  */
-export type FeatureCountOutputTypeCountCarsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CarWhereInput
+export type FeatureCountOutputTypeCountCarFeatureRelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarFeatureRelWhereInput
 }
 
 /**
  * FeatureCountOutputType without action
  */
-export type FeatureCountOutputTypeCountCarFeatureRelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CarFeatureRelWhereInput
+export type FeatureCountOutputTypeCountCarsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarWhereInput
 }
 
 
 export type FeatureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  cars?: boolean | Prisma.Feature$carsArgs<ExtArgs>
   carFeatureRels?: boolean | Prisma.Feature$carFeatureRelsArgs<ExtArgs>
+  cars?: boolean | Prisma.Feature$carsArgs<ExtArgs>
   _count?: boolean | Prisma.FeatureCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["feature"]>
 
@@ -468,8 +475,8 @@ export type FeatureSelectScalar = {
 
 export type FeatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["feature"]>
 export type FeatureInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  cars?: boolean | Prisma.Feature$carsArgs<ExtArgs>
   carFeatureRels?: boolean | Prisma.Feature$carFeatureRelsArgs<ExtArgs>
+  cars?: boolean | Prisma.Feature$carsArgs<ExtArgs>
   _count?: boolean | Prisma.FeatureCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type FeatureIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -478,8 +485,8 @@ export type FeatureIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $FeaturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Feature"
   objects: {
-    cars: Prisma.$CarPayload<ExtArgs>[]
     carFeatureRels: Prisma.$CarFeatureRelPayload<ExtArgs>[]
+    cars: Prisma.$CarPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -878,8 +885,8 @@ readonly fields: FeatureFieldRefs;
  */
 export interface Prisma__FeatureClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  cars<T extends Prisma.Feature$carsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Feature$carsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   carFeatureRels<T extends Prisma.Feature$carFeatureRelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Feature$carFeatureRelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarFeatureRelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cars<T extends Prisma.Feature$carsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Feature$carsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1302,30 +1309,6 @@ export type FeatureDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Feature.cars
- */
-export type Feature$carsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Car
-   */
-  select?: Prisma.CarSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Car
-   */
-  omit?: Prisma.CarOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CarInclude<ExtArgs> | null
-  where?: Prisma.CarWhereInput
-  orderBy?: Prisma.CarOrderByWithRelationInput | Prisma.CarOrderByWithRelationInput[]
-  cursor?: Prisma.CarWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CarScalarFieldEnum | Prisma.CarScalarFieldEnum[]
-}
-
-/**
  * Feature.carFeatureRels
  */
 export type Feature$carFeatureRelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1347,6 +1330,30 @@ export type Feature$carFeatureRelsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.CarFeatureRelScalarFieldEnum | Prisma.CarFeatureRelScalarFieldEnum[]
+}
+
+/**
+ * Feature.cars
+ */
+export type Feature$carsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Car
+   */
+  select?: Prisma.CarSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Car
+   */
+  omit?: Prisma.CarOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarInclude<ExtArgs> | null
+  where?: Prisma.CarWhereInput
+  orderBy?: Prisma.CarOrderByWithRelationInput | Prisma.CarOrderByWithRelationInput[]
+  cursor?: Prisma.CarWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CarScalarFieldEnum | Prisma.CarScalarFieldEnum[]
 }
 
 /**

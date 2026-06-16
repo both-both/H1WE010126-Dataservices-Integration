@@ -910,10 +910,10 @@ export const CarScalarFieldEnum = {
   year: 'year',
   categoryId: 'categoryId',
   brandId: 'brandId',
-  featureId: 'featureId',
   price: 'price',
   isActive: 'isActive',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  featureId: 'featureId'
 } as const
 
 export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
@@ -946,7 +946,7 @@ export type FeatureScalarFieldEnum = (typeof FeatureScalarFieldEnum)[keyof typeo
 
 export const CarFeatureRelScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
+  carId: 'carId',
   featureId: 'featureId'
 } as const
 

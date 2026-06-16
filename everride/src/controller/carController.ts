@@ -23,6 +23,11 @@ class CarController {
               name: true,
             },
           },
+          featureRel: {
+            select: {
+              feature: true,
+            },
+          },
           title: true,
           year: true,
           price: true,
